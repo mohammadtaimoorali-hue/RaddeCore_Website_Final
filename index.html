@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing — Raddecore ERP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../src/styles/main.css" />
+  <style>
+    #navbar { position:sticky; }
+    .pricing-hero { padding:120px 5% 60px; text-align:center; }
+    .pricing-hero h1 { font-size:clamp(32px,5vw,54px); font-weight:700; letter-spacing:-1.2px; margin-bottom:16px; }
+    .pricing-hero p { color:var(--txt2); font-size:18px; max-width:560px; margin:0 auto; }
+    .faq-section { padding:80px 5%; max-width:800px; margin:0 auto; }
+    .faq-section h2 { font-size:28px; font-weight:700; letter-spacing:-.5px; margin-bottom:40px; text-align:center; }
+    .faq-item { border-bottom:1px solid var(--border); padding:20px 0; cursor:pointer; }
+    .faq-q { display:flex; justify-content:space-between; align-items:center; font-size:15px; font-weight:500; }
+    .faq-icon { color:var(--txt2); font-size:20px; transition:transform .3s; }
+    .faq-a { font-size:14px; color:var(--txt2); line-height:1.75; max-height:0; overflow:hidden; transition:max-height .35s ease, padding .3s; }
+    .faq-item.open .faq-a { max-height:200px; padding-top:14px; }
+    .faq-item.open .faq-icon { transform:rotate(45deg); }
+    .enterprise-cta { background:var(--card); border:1px solid var(--border2); border-radius:20px; padding:48px; text-align:center; max-width:700px; margin:0 auto 80px; }
+    .enterprise-cta h3 { font-size:24px; font-weight:700; letter-spacing:-.5px; margin-bottom:12px; }
+    .enterprise-cta p { color:var(--txt2); font-size:15px; margin-bottom:28px; }
+    .enterprise-cta-btns { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  
+    /* Sales Modal */
+    #salesModal { display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,.75); backdrop-filter:blur(8px); align-items:center; justify-content:center; padding:20px; }
+    #salesModal.open { display:flex; }
+    .sales-modal-box { background:#1a1d28; border:1px solid rgba(255,255,255,.15); border-radius:20px; padding:44px; max-width:480px; width:100%; position:relative; }
+    .sales-modal-close { position:absolute; top:16px; right:16px; background:rgba(255,255,255,.08); border:none; color:#8a8fa8; width:32px; height:32px; border-radius:50%; font-size:18px; cursor:pointer; font-family:inherit; }
+    .sales-modal-close:hover { color:#f0f2f8; }
+    .sales-modal-box h2 { font-size:22px; font-weight:700; margin-bottom:8px; color:#f0f2f8; }
+    .sales-modal-box p { color:#8a8fa8; font-size:14px; margin-bottom:24px; line-height:1.65; }
+    .sales-input { width:100%; background:#0f1117; border:1px solid rgba(255,255,255,.12); color:#f0f2f8; padding:12px 16px; border-radius:9px; font-size:14px; font-family:inherit; box-sizing:border-box; margin-bottom:12px; transition:border-color .2s; }
+    .sales-input:focus { outline:none; border-color:#4f8cff; }
+    .sales-submit { width:100%; padding:14px; background:linear-gradient(135deg,#4f8cff,#7c5cfc); border:none; color:#fff; font-size:15px; font-weight:600; border-radius:10px; cursor:pointer; font-family:inherit; transition:opacity .2s; margin-top:4px; }
+    .sales-submit:hover:not(:disabled) { opacity:.9; }
+    .sales-submit:disabled { opacity:.6; cursor:not-allowed; }
+    .sales-success { display:none; margin-top:16px; background:rgba(34,211,160,.1); border:1px solid rgba(34,211,160,.3); color:#22d3a0; padding:12px 16px; border-radius:8px; text-align:center; font-size:14px; }
+    .sales-error { display:none; margin-top:12px; background:rgba(255,107,74,.1); border:1px solid rgba(255,107,74,.3); color:#ff8a6b; padding:10px 16px; border-radius:8px; font-size:13px; }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="logo">Raddecore ERP</a>
+      <ul class="nav-links">
+        <li><a href="/#modules">Modules</a></li>
+        <li><a href="/demo">Live Demo</a></li>
+        <li><a href="/pricing" style="color:var(--txt)">Pricing</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="/auth/login" class="btn-ghost">Sign in</a>
+        <a href="/auth/signup" class="btn-primary">Start Free Trial</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="pricing-hero">
+    <div class="section-tag">Pricing</div>
+    <h1>Honest pricing.<br /><span class="grad-text">No surprises.</span></h1>
+    <p>Start free for 14 days, no credit card required. Scale up as your team grows.</p>
+  </div>
+
+  <!-- PLANS (reused from main) -->
+  <section id="pricing" style="padding-top:0">
+    <div class="billing-toggle">
+      <button class="toggle-opt active" id="btnMonthly" onclick="setBilling('monthly')">Monthly</button>
+      <button class="toggle-opt" id="btnYearly" onclick="setBilling('yearly')">Yearly</button>
+      <span class="save-tag">Save 20%</span>
+    </div>
+    <div class="plans-grid" id="plansGrid"></div>
+    <div class="compare-table-wrap">
+      <div class="compare-label">Full feature comparison</div>
+      <table class="compare-table" id="compareTable"></table>
+    </div>
+  </section>
+
+  <!-- ENTERPRISE CTA -->
+  <div style="padding:0 5%">
+    <div class="enterprise-cta">
+      <h3>Need a custom plan?</h3>
+      <p>For large organisations with specific requirements, custom integrations, or on-premise deployment — talk to our enterprise team.</p>
+      <div class="enterprise-cta-btns">
+        <button onclick="openSalesModal()" class="btn-hero-primary" style="border:none;cursor:pointer">Talk to Sales</button>
+        <a href="/demo" class="btn-hero-ghost">View Live Demo</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-section">
+    <h2>Frequently asked questions</h2>
+    <div id="faqList"></div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo">Raddecore ERP</span>
+        <p>The enterprise ERP platform built for modern businesses.</p>
+      </div>
+      <div class="footer-col"><h4>Product</h4><a href="/#modules">Features</a><a href="/pricing">Pricing</a><a href="/demo">Live Demo</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="/#about">About</a><a href="/blog">Blog</a><a href="/contact">Contact</a></div>
+      <div class="footer-col"><h4>Legal</h4><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Raddecore ERP. All rights reserved.</span>
+      <span>raddecore.com</span>
+    </div>
+  </footer>
+
+  <script src="../src/lib/main.js"></script>
+  <script>
+    const FAQS = [
+      { q: 'Is there really no credit card required for the trial?', a: 'Correct. You can start a 14-day trial of any plan without entering payment details. We only ask for a card when you choose to continue after the trial period ends.' },
+      { q: 'Can I change plans after signing up?', a: 'Yes. You can upgrade or downgrade your plan at any time from your account settings. Upgrades take effect immediately; downgrades take effect at the next billing cycle.' },
+      { q: 'What happens to my data if I cancel?', a: 'Your data remains accessible for 30 days after cancellation. You can export everything in CSV or JSON format at any time, even after cancellation.' },
+      { q: 'Do you offer discounts for non-profits or educational institutions?', a: 'Yes — we offer 40% off for registered non-profits and 50% off for educational institutions. Contact our sales team with proof of status to claim the discount.' },
+      { q: 'What payment methods do you accept?', a: 'We accept all major credit cards (Visa, Mastercard, Amex), bank transfers, and can issue invoices for annual Enterprise plans.' },
+      { q: 'Is my data isolated from other customers?', a: 'Yes. Raddecore uses a multi-tenant architecture with complete logical data isolation per organisation. Your data is stored in a dedicated schema and is never accessible by other tenants.' },
+      { q: 'Can I add more users than my plan allows?', a: 'Yes. Additional users can be added at a per-seat rate for each plan tier. The pricing is shown in your billing dashboard and scales linearly with no volume penalty.' },
+    ];
+
+    const faqList = document.getElementById('faqList');
+    FAQS.forEach((faq, i) => {
+      const item = document.createElement('div');
+      item.className = 'faq-item';
+      item.innerHTML = `
+        <div class="faq-q" onclick="toggleFaq(${i})">
+          <span>${faq.q}</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">${faq.a}</div>
+      `;
+      faqList.appendChild(item);
+    });
+
+    function toggleFaq(i) {
+      const items = document.querySelectorAll('.faq-item');
+      items[i].classList.toggle('open');
+    }
+  </script>
+
+  <!-- TALK TO SALES MODAL -->
+  <div id="salesModal" onclick="if(event.target===this)closeSalesModal()">
+    <div class="sales-modal-box">
+      <button class="sales-modal-close" onclick="closeSalesModal()">×</button>
+      <h2>Talk to Sales</h2>
+      <p>Tell us about your business and we'll be in touch within 24 hours.</p>
+      <form id="salesForm" onsubmit="handleSalesSubmit(event)">
+        <input class="sales-input" type="text" name="name" placeholder="Your name" required />
+        <input class="sales-input" type="email" name="email" placeholder="Work email" required />
+        <input class="sales-input" type="text" name="company" placeholder="Company name" />
+        <input class="sales-input" type="text" name="phone" placeholder="Phone number (optional)" />
+        <textarea class="sales-input" name="message" placeholder="How can we help? Tell us about your business size and requirements." rows="3" style="resize:vertical"></textarea>
+        <button type="submit" class="sales-submit" id="salesSubmitBtn">Send Message →</button>
+        <div class="sales-error" id="salesError">Something went wrong. Please try again.</div>
+      </form>
+      <div class="sales-success" id="salesSuccess">
+        ✓ Message sent! Our sales team will be in touch within 24 hours.
+      </div>
+    </div>
+  </div>
+  <script>
+  function openSalesModal(){document.getElementById('salesModal').classList.add('open');document.body.style.overflow='hidden';}
+  function closeSalesModal(){document.getElementById('salesModal').classList.remove('open');document.body.style.overflow='';}
+  async function handleSalesSubmit(e){
+    e.preventDefault();
+    const btn=document.getElementById('salesSubmitBtn');
+    const errEl=document.getElementById('salesError');
+    const successEl=document.getElementById('salesSuccess');
+    errEl.style.display='none';
+    btn.textContent='Sending…';btn.disabled=true;
+    try{
+      const res=await fetch('https://formspree.io/f/xgoqzjdl',{method:'POST',headers:{'Accept':'application/json'},body:new FormData(e.target)});
+      if(res.ok){e.target.style.display='none';successEl.style.display='block';setTimeout(()=>closeSalesModal(),4000);}
+      else{errEl.style.display='block';btn.textContent='Send Message →';btn.disabled=false;}
+    }catch{errEl.style.display='block';btn.textContent='Send Message →';btn.disabled=false;}
+  }
+  </script>
+
+</body>
+</html>
