@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raddecore ERP — Run your entire business, fully connected</title>
+  <meta name="description" content="Raddecore ERP is a multi-tenant enterprise SaaS platform covering Accounting, Inventory, CRM, HR & Payroll, Restaurant and Retail — all in one place." />
+  <meta property="og:title" content="Raddecore ERP" />
+  <meta property="og:description" content="One platform. Every department. Fully connected." />
+  <meta property="og:url" content="https://raddecore.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="src/styles/main.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="/" class="logo">Raddecore ERP</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#modules">Modules</a></li>
+        <li><a href="#demo">Live Demo</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="/ndis">NDIS</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="/auth/login" class="btn-ghost">Sign in</a>
+        <a href="/auth/signup" class="btn-primary">Start Free Trial</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg">
+      <div class="hero-orb orb-blue"></div>
+      <div class="hero-orb orb-purple"></div>
+      <div class="hero-orb orb-green"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Now available — Multi-tenant ERP for enterprise teams
+      </div>
+      <h1>Run your entire business with<br /><span class="grad-text">Raddecore ERP</span></h1>
+      <p class="hero-sub">One platform. Every department. Fully connected.</p>
+      <div class="hero-btns">
+        <a href="/auth/signup" class="btn-hero-primary">Start Free Trial <span class="arrow">→</span></a>
+        <a href="#demo" class="btn-hero-ghost">🖥 Try Live Demo</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-n" data-target="2400" data-prefix="">2,400+</span><span class="stat-l">Active businesses</span></div>
+        <div class="stat"><span class="stat-n">99.9%</span><span class="stat-l">Uptime SLA</span></div>
+        <div class="stat"><span class="stat-n">8</span><span class="stat-l">Core modules</span></div>
+        <div class="stat"><span class="stat-n">40+</span><span class="stat-l">Countries</span></div>
+      </div>
+    </div>
+
+    <!-- Dashboard Preview -->
+    <div class="dash-wrapper">
+      <div class="dash-frame">
+        <div class="dash-bar">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+          <div class="dash-url">app.raddecore.com/dashboard</div>
+          <div style="width:48px"></div>
+        </div>
+        <div class="dash-layout">
+          <aside class="dash-sidebar">
+            <span class="sidebar-brand">Raddecore</span>
+            <nav class="sidebar-nav">
+              <a href="#" class="s-item active">📊 Dashboard</a>
+              <a href="#" class="s-item">💰 Accounting</a>
+              <a href="#" class="s-item">📦 Inventory</a>
+              <a href="#" class="s-item">👥 CRM</a>
+              <a href="#" class="s-item">🏢 HR & Payroll</a>
+              <a href="#" class="s-item">🍽 Restaurant</a>
+              <a href="#" class="s-item">📈 Reports</a>
+              <a href="#" class="s-item">⚙ Settings</a>
+            </nav>
+          </aside>
+          <main class="dash-main">
+            <div class="kpi-grid" id="kpiGrid">
+              <div class="kpi-card">
+                <div class="kpi-val" id="kpi-rev">$0</div>
+                <div class="kpi-lbl">Revenue (MTD)</div>
+                <div class="kpi-chg positive">↑ 12.4%</div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-val" id="kpi-orders">0</div>
+                <div class="kpi-lbl">Active Orders</div>
+                <div class="kpi-chg positive">↑ 8.1%</div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-val" id="kpi-cust">0</div>
+                <div class="kpi-lbl">Customers</div>
+                <div class="kpi-chg positive">↑ 3.7%</div>
+              </div>
+              <div class="kpi-card">
+                <div class="kpi-val" id="kpi-margin">0%</div>
+                <div class="kpi-lbl">Gross Margin</div>
+                <div class="kpi-chg positive">↑ 0.9%</div>
+              </div>
+            </div>
+            <div class="chart-card">
+              <div class="chart-hdr">
+                <span class="chart-title">Revenue — last 7 months</span>
+                <span class="chart-legend"><span class="leg-dot" style="background:#4f8cff"></span>Product <span class="leg-dot" style="background:#7c5cfc;margin-left:8px"></span>Services</span>
+              </div>
+              <div class="bar-chart" id="barChart"></div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section class="logos-section">
+    <p class="logos-label">Trusted by businesses across industries</p>
+    <div class="logos-row">
+      <span class="logo-badge">🏨 Meridian Hotels</span>
+      <span class="logo-badge">🛒 FreshMart</span>
+      <span class="logo-badge">🍕 PizzaCraft</span>
+      <span class="logo-badge">🏗 Apex Construction</span>
+      <span class="logo-badge">💊 MediCare Plus</span>
+      <span class="logo-badge">📚 EduBridge</span>
+    </div>
+  </section>
+
+  <!-- MODULES -->
+  <section id="modules">
+    <div class="section-header">
+      <div class="section-tag">Core Modules</div>
+      <h2 class="section-h">Everything your business needs,<br /><span class="grad-text">built in</span></h2>
+      <p class="section-sub">Eight fully integrated modules sharing one data layer — no siloed spreadsheets, no manual syncing.</p>
+    </div>
+    <div class="modules-grid" id="modulesGrid"></div>
+  </section>
+
+  <!-- DEMO GATEWAY -->
+  <section id="demo">
+    <div class="demo-glow"></div>
+    <div class="section-header" style="position:relative;z-index:1">
+      <div class="section-tag">Live Sandbox</div>
+      <h2 class="section-h">Try <span class="grad-text">Raddecore</span> right now</h2>
+      <p class="section-sub">Explore a fully loaded demo environment with real data. No credit card required.</p>
+    </div>
+    <div class="demo-box">
+      <div class="sandbox-banner">
+        <span>⚠</span>
+        You are entering a live sandbox environment — data resets every 24 hours
+      </div>
+      <div class="demo-url-bar">
+        <span class="url-dot"></span>
+        https://demo.raddecore.com
+        <button class="copy-btn" onclick="copyDemoUrl()">Copy</button>
+      </div>
+      <div class="creds-box">
+        <div class="creds-label">Demo Credentials</div>
+        <div class="cred-row"><span class="cred-key">Email</span><span class="cred-val">demo@raddecore.com</span></div>
+        <div class="cred-row"><span class="cred-key">Password</span><span class="cred-val">Demo@2025!</span></div>
+        <div class="cred-row"><span class="cred-key">Role</span><span class="cred-val">Admin (full access)</span></div>
+      </div>
+      <div class="demo-actions">
+        <a href="https://demo.raddecore.com" target="_blank" class="btn-hero-primary" style="flex:1;text-align:center">Launch Demo →</a>
+        <a href="/auth/signup" class="btn-hero-ghost" style="flex:1;text-align:center">Start Free Trial</a>
+      </div>
+      <div class="demo-features">
+        <div class="df">✓ Full admin access</div>
+        <div class="df">✓ 6 months of sample data</div>
+        <div class="df">✓ All 8 modules enabled</div>
+        <div class="df">✓ No setup required</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="section-header">
+      <div class="section-tag">Pricing</div>
+      <h2 class="section-h">Simple, transparent pricing</h2>
+      <p class="section-sub">Scale your plan as your business grows. No hidden fees, no surprises.</p>
+    </div>
+    <div class="billing-toggle">
+      <button class="toggle-opt active" id="btnMonthly" onclick="setBilling('monthly')">Monthly</button>
+      <button class="toggle-opt" id="btnYearly" onclick="setBilling('yearly')">Yearly</button>
+      <span class="save-tag">Save 20%</span>
+    </div>
+    <div class="plans-grid" id="plansGrid"></div>
+    <div class="compare-table-wrap">
+      <div class="compare-label">Full feature comparison</div>
+      <table class="compare-table" id="compareTable"></table>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="section-header">
+      <div class="section-tag">Testimonials</div>
+      <h2 class="section-h">Loved by operators worldwide</h2>
+    </div>
+    <div class="testimonials-grid" id="testimonialsGrid"></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-inner">
+      <div class="about-text">
+        <div class="section-tag">About Raddecore</div>
+        <h2 class="section-h">Built for the way modern<br /><span class="grad-text">businesses actually work</span></h2>
+        <p class="section-sub">Legacy ERPs were built for a different era — expensive, rigid, and painful to deploy. Raddecore is designed from scratch as a cloud-native, multi-tenant SaaS platform that's fast to set up and easy to extend.</p>
+        <ul class="about-list">
+          <li>Multi-tenant architecture with complete tenant isolation</li>
+          <li>Role-based access control with fine-grained permissions</li>
+          <li>SOC 2 Type II compliant infrastructure</li>
+          <li>99.9% uptime backed by SLA</li>
+          <li>Open API — connect anything</li>
+        </ul>
+        <a href="/auth/signup" class="btn-hero-primary" style="display:inline-flex;margin-top:32px">Get started free →</a>
+      </div>
+      <div class="about-visual">
+        <div class="about-card">
+          <div class="ac-row"><span class="ac-label">Architecture</span><span class="ac-val green">Multi-tenant SaaS</span></div>
+          <div class="ac-row"><span class="ac-label">Hosting</span><span class="ac-val">AWS + CloudFront CDN</span></div>
+          <div class="ac-row"><span class="ac-label">Database</span><span class="ac-val">PostgreSQL (isolated)</span></div>
+          <div class="ac-row"><span class="ac-label">Auth</span><span class="ac-val">JWT + OAuth 2.0</span></div>
+          <div class="ac-row"><span class="ac-label">Compliance</span><span class="ac-val green">SOC 2 · GDPR · ISO 27001</span></div>
+          <div class="ac-row"><span class="ac-label">API</span><span class="ac-val">REST + Webhooks</span></div>
+          <div class="ac-row"><span class="ac-label">Uptime</span><span class="ac-val green">99.9% SLA</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="cta">
+    <div class="cta-card">
+      <div class="cta-glow"></div>
+      <h2 class="section-h" style="position:relative;z-index:1">Ready to transform your <span class="grad-text">operations?</span></h2>
+      <p class="section-sub" style="margin:0 auto 36px;position:relative;z-index:1">Join 2,400+ businesses already running on Raddecore ERP. Start your 14-day free trial today — no credit card needed.</p>
+      <div class="cta-btns">
+        <a href="/auth/signup" class="btn-hero-primary">Start Free Trial</a>
+        <a href="/contact/sales" class="btn-hero-ghost">Talk to Sales</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo">Raddecore ERP</span>
+        <p>The enterprise ERP platform built for modern, fast-moving businesses. One platform, every department.</p>
+        <div class="footer-socials">
+          <a href="#">LinkedIn</a>
+          <a href="#">Twitter</a>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Product</h4><a href="#modules">Features</a><a href="#pricing">Pricing</a><a href="#demo">Live Demo</a><a href="/changelog">Changelog</a><a href="/docs">Documentation</a></div>
+      <div class="footer-col"><h4>Company</h4><a href="#about">About</a><a href="/blog">Blog</a><a href="/careers">Careers</a><a href="/contact">Contact</a></div>
+      <div class="footer-col"><h4>Legal</h4><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/security">Security</a><a href="/gdpr">GDPR</a></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Raddecore ERP. All rights reserved.</span>
+      <span>raddecore.com</span>
+    </div>
+  </footer>
+
+  <script src="src/lib/main.js"></script>
+</body>
+</html>
