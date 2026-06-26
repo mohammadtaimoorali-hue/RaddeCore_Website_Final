@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In — Raddecore ERP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../src/styles/main.css" />
+  <style>
+    body { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:40px 5%; }
+    .login-wrap { width:100%; max-width:420px; }
+    .login-header { text-align:center; margin-bottom:36px; }
+    .login-header .logo { font-size:20px; display:block; margin-bottom:20px; }
+    .login-header h1 { font-size:26px; font-weight:700; letter-spacing:-.5px; margin-bottom:8px; }
+    .login-header p { color:var(--txt2); font-size:14px; }
+    .login-header p a { color:var(--accent); }
+    .login-card { background:var(--card); border:1px solid var(--border2); border-radius:20px; padding:40px; }
+    .form-group { margin-bottom:18px; }
+    label { display:block; font-size:12px; font-weight:600; color:var(--txt2); letter-spacing:.4px; text-transform:uppercase; margin-bottom:8px; }
+    .label-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+    .label-row label { margin-bottom:0; }
+    .forgot { font-size:12px; color:var(--accent); }
+    input[type="email"], input[type="password"] {
+      width:100%; background:var(--bg2); border:1px solid var(--border2); color:var(--txt);
+      padding:12px 16px; border-radius:9px; font-size:14px; font-family:var(--mono);
+      transition:border-color .2s;
+    }
+    input:focus { outline:none; border-color:var(--accent); }
+    .submit-btn { width:100%; padding:14px; background:var(--grd); border:none; color:#fff; font-size:15px; font-weight:600; border-radius:10px; cursor:pointer; font-family:var(--font); transition:opacity .2s; margin-top:8px; }
+    .submit-btn:hover { opacity:.9; }
+    .divider-line { display:flex; align-items:center; gap:12px; margin:24px 0; color:var(--txt3); font-size:12px; }
+    .divider-line::before, .divider-line::after { content:''; flex:1; height:1px; background:var(--border); }
+    .oauth-btn { width:100%; padding:12px; background:var(--bg2); border:1px solid var(--border2); color:var(--txt2); font-size:14px; font-weight:500; border-radius:10px; cursor:pointer; font-family:var(--font); display:flex; align-items:center; justify-content:center; gap:10px; transition:all .2s; }
+    .oauth-btn:hover { border-color:var(--accent); color:var(--txt); }
+    .demo-access { margin-top:20px; background:rgba(34,211,160,.07); border:1px solid rgba(34,211,160,.2); border-radius:10px; padding:16px; text-align:center; }
+    .demo-access p { font-size:13px; color:var(--txt2); margin-bottom:10px; }
+    .demo-access a { font-size:13px; color:var(--accent3); font-weight:600; }
+  </style>
+</head>
+<body>
+  <div class="login-wrap">
+    <div class="login-header">
+      <a href="/" class="logo">Raddecore ERP</a>
+      <h1>Welcome back</h1>
+      <p>Don't have an account? <a href="/auth/signup">Start free trial</a></p>
+    </div>
+
+    <div class="login-card">
+      <button class="oauth-btn" style="margin-bottom:0" onclick="alert('Google OAuth')">
+        <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.2l6.7-6.7C35.6 2.4 30.2 0 24 0 14.8 0 6.9 5.4 3 13.3l7.8 6.1C12.7 13.1 17.9 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8C43.5 37.3 46.5 31.4 46.5 24.5z"/><path fill="#FBBC05" d="M10.8 28.6A14.6 14.6 0 0 1 9.5 24c0-1.6.3-3.2.8-4.6L2.5 13.3A23.9 23.9 0 0 0 0 24c0 3.8.9 7.4 2.5 10.7l8.3-6.1z"/><path fill="#34A853" d="M24 48c6.2 0 11.4-2 15.2-5.5l-7.5-5.8c-2 1.4-4.7 2.2-7.7 2.2-6.1 0-11.3-3.6-13.2-8.8l-7.8 6.1C6.9 42.6 14.8 48 24 48z"/></svg>
+        Continue with Google
+      </button>
+
+      <div class="divider-line">or sign in with email</div>
+
+      <form onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label>Email address</label>
+          <input type="email" placeholder="you@company.com" required />
+        </div>
+        <div class="form-group">
+          <div class="label-row">
+            <label>Password</label>
+            <a href="/auth/reset" class="forgot">Forgot password?</a>
+          </div>
+          <input type="password" placeholder="••••••••" required />
+        </div>
+        <button type="submit" class="submit-btn" id="loginBtn">Sign in →</button>
+      </form>
+
+      <div class="demo-access">
+        <p>Want to explore without an account?</p>
+        <a href="/demo">Access the live demo →</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function handleLogin(e) {
+      e.preventDefault();
+      const btn = document.getElementById('loginBtn');
+      btn.textContent = 'Signing in…';
+      btn.style.opacity = '.7';
+      btn.disabled = true;
+      // TODO: POST /api/auth/login
+      setTimeout(() => { window.location.href = '/app'; }, 1000);
+    }
+  </script>
+</body>
+</html>
