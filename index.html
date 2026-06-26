@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo Access — Raddecore ERP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../src/styles/main.css" />
+  <style>
+    body { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 40px 5%; }
+    .demo-page { width: 100%; max-width: 480px; }
+    .demo-header { text-align: center; margin-bottom: 36px; }
+    .demo-header .logo { font-size: 20px; display: block; margin-bottom: 20px; }
+    .demo-header h1 { font-size: 26px; font-weight: 700; letter-spacing: -.5px; margin-bottom: 8px; }
+    .demo-header p { color: var(--txt2); font-size: 14px; }
+    .demo-card { background: var(--card); border: 1px solid var(--border2); border-radius: 20px; padding: 40px; }
+    .banner { background: rgba(255,107,74,.1); border: 1px solid rgba(255,107,74,.25); color: #ff8a6b; font-size: 13px; padding: 10px 16px; border-radius: 8px; margin-bottom: 28px; display: flex; align-items: center; gap: 8px; }
+    .form-group { margin-bottom: 18px; }
+    label { display: block; font-size: 12px; font-weight: 600; color: var(--txt2); letter-spacing: .4px; text-transform: uppercase; margin-bottom: 8px; }
+    .input-wrap { position: relative; }
+    input[type="email"], input[type="password"] {
+      width: 100%; background: var(--bg2); border: 1px solid var(--border2); color: var(--txt);
+      padding: 12px 16px; border-radius: 9px; font-size: 14px; font-family: var(--mono);
+      transition: border-color .2s;
+    }
+    input:focus { outline: none; border-color: var(--accent); }
+    .auto-fill { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: rgba(79,140,255,.15); border: 1px solid rgba(79,140,255,.25); color: var(--accent); font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; cursor: pointer; font-family: var(--font); }
+    .submit-btn { width: 100%; padding: 14px; background: var(--grd); border: none; color: #fff; font-size: 15px; font-weight: 600; border-radius: 10px; cursor: pointer; font-family: var(--font); margin-top: 8px; transition: opacity .2s; }
+    .submit-btn:hover { opacity: .9; }
+    .divider-line { display: flex; align-items: center; gap: 12px; margin: 24px 0; color: var(--txt3); font-size: 12px; }
+    .divider-line::before, .divider-line::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .back-link { text-align: center; margin-top: 20px; font-size: 13px; color: var(--txt2); }
+    .back-link a { color: var(--accent); }
+    .info-box { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-top: 20px; }
+    .info-box h4 { font-size: 11px; font-weight: 700; letter-spacing: .5px; color: var(--txt2); text-transform: uppercase; margin-bottom: 10px; }
+    .info-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid var(--border); }
+    .info-row:last-child { border-bottom: none; }
+    .info-key { font-size: 12px; color: var(--txt2); }
+    .info-val { font-size: 12px; font-family: var(--mono); color: var(--accent3); }
+  </style>
+</head>
+<body>
+  <div class="demo-page">
+    <div class="demo-header">
+      <a href="/" class="logo">Raddecore ERP</a>
+      <h1>Demo Environment Access</h1>
+      <p>Sign in to the live sandbox with the credentials below.</p>
+    </div>
+
+    <div class="demo-card">
+      <div class="banner">
+        <span>⚠</span>
+        <span>Sandbox environment — data resets every 24 hours</span>
+      </div>
+
+      <form id="demoForm" onsubmit="loginDemo(event)">
+        <div class="form-group">
+          <label>Email address</label>
+          <div class="input-wrap">
+            <input type="email" id="emailInput" placeholder="demo@raddecore.com" value="demo@raddecore.com" />
+            <button type="button" class="auto-fill" onclick="autoFill()">Auto-fill</button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <div class="input-wrap">
+            <input type="password" id="passInput" placeholder="Demo@2025!" value="Demo@2025!" />
+          </div>
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">
+          Launch Demo →
+        </button>
+      </form>
+
+      <div class="divider-line">or</div>
+
+      <a href="https://demo.raddecore.com" target="_blank" class="btn-hero-ghost" style="width:100%;justify-content:center;box-sizing:border-box">
+        Open demo.raddecore.com directly
+      </a>
+
+      <div class="info-box">
+        <h4>Pre-loaded Modules</h4>
+        <div class="info-row"><span class="info-key">Role</span><span class="info-val">Admin (full access)</span></div>
+        <div class="info-row"><span class="info-key">Data</span><span class="info-val">6 months sample data</span></div>
+        <div class="info-row"><span class="info-key">Branches</span><span class="info-val">3 demo locations</span></div>
+        <div class="info-row"><span class="info-key">Modules</span><span class="info-val">All 8 enabled</span></div>
+      </div>
+    </div>
+
+    <div class="back-link">
+      Not ready to sign up? <a href="/#pricing">View pricing plans</a>
+    </div>
+  </div>
+
+  <script>
+    function autoFill() {
+      document.getElementById('emailInput').value = 'demo@raddecore.com';
+      document.getElementById('passInput').value = 'Demo@2025!';
+    }
+
+    function loginDemo(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submitBtn');
+      btn.textContent = 'Launching…';
+      btn.style.opacity = '.7';
+      btn.disabled = true;
+      // Redirect to demo environment
+      setTimeout(() => {
+        window.location.href = 'https://demo.raddecore.com';
+      }, 800);
+    }
+  </script>
+</body>
+</html>
