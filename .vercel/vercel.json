@@ -1,6 +1,7 @@
 {
   "cleanUrls": true,
    "routes": [
+     { "src": "/", "dest": "/index.html" }
     { "src": "/ndis", "dest": "/ndis/index.html" }
   ],
   "trailingSlash": false,
