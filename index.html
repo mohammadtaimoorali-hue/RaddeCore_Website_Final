@@ -3,277 +3,564 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Raddecore ERP — Run your entire business, fully connected</title>
-  <meta name="description" content="Raddecore ERP is a multi-tenant enterprise SaaS platform covering Accounting, Inventory, CRM, HR & Payroll, Restaurant and Retail — all in one place." />
-  <meta property="og:title" content="Raddecore ERP" />
-  <meta property="og:description" content="One platform. Every department. Fully connected." />
-  <meta property="og:url" content="https://raddecore.com" />
+  <title>RaddeCore — Enterprise Business Platform</title>
+  <meta name="description" content="RaddeCore is the enterprise platform powering industry-specific software for NDIS providers, restaurants, asset managers and more. Built by NewEraTechServices." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="src/styles/main.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:   #1e3a8a;
+      --blue:   #1d4ed8;
+      --blue2:  #3b82f6;
+      --sky:    #60a5fa;
+      --cyan:   #0ea5e9;
+      --dark:   #0f172a;
+      --dark2:  #1e293b;
+      --slate:  #334155;
+      --muted:  #64748b;
+      --light:  #94a3b8;
+      --border: #e2e8f0;
+      --bg:     #f8fafc;
+      --white:  #ffffff;
+      --font:   'Plus Jakarta Sans', -apple-system, sans-serif;
+      --radius: 12px;
+      --shadow: 0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.04);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,.08), 0 2px 8px rgba(0,0,0,.04);
+    }
+    body { font-family: var(--font); background: var(--white); color: var(--dark); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.92); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 32px;
+      display: flex; align-items: center; height: 64px; gap: 40px;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; color: var(--dark); letter-spacing: -.4px; }
+    .nav-logo svg { flex-shrink: 0; }
+    .nav-links { display: flex; gap: 4px; flex: 1; }
+    .nav-links a { padding: 6px 14px; border-radius: 8px; font-size: 14px; font-weight: 500; color: var(--slate); transition: all .15s; }
+    .nav-links a:hover { background: var(--bg); color: var(--dark); }
+    .nav-ctas { display: flex; gap: 8px; align-items: center; margin-left: auto; }
+    .btn-ghost { padding: 8px 18px; border-radius: 8px; font-size: 14px; font-weight: 600; color: var(--slate); transition: all .15s; border: 1px solid transparent; font-family: var(--font); cursor: pointer; background: none; }
+    .btn-ghost:hover { border-color: var(--border); background: var(--bg); }
+    .btn-primary { padding: 8px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; color: white; background: var(--blue); border: none; cursor: pointer; font-family: var(--font); transition: all .15s; }
+    .btn-primary:hover { background: var(--navy); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 1200px; margin: 0 auto; padding: 100px 32px 80px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    }
+    .hero-tag { display: inline-flex; align-items: center; gap: 8px; background: #eff6ff; border: 1px solid #bfdbfe; color: var(--blue); font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 20px; margin-bottom: 24px; letter-spacing: .3px; }
+    .hero h1 { font-size: clamp(36px, 4vw, 54px); font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; color: var(--dark); margin-bottom: 20px; }
+    .hero h1 span { color: var(--blue); }
+    .hero p { font-size: 18px; color: var(--muted); line-height: 1.7; margin-bottom: 36px; max-width: 480px; }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-hero-primary { padding: 14px 28px; border-radius: 10px; font-size: 15px; font-weight: 700; color: white; background: var(--blue); border: none; cursor: pointer; font-family: var(--font); transition: all .15s; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-hero-primary:hover { background: var(--navy); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(29,78,216,.3); }
+    .btn-hero-secondary { padding: 14px 28px; border-radius: 10px; font-size: 15px; font-weight: 600; color: var(--slate); background: white; border: 1px solid var(--border); cursor: pointer; font-family: var(--font); transition: all .15s; display: inline-flex; align-items: center; gap: 8px; }
+    .btn-hero-secondary:hover { border-color: var(--blue2); color: var(--blue); background: #f0f7ff; }
+    .hero-stats { display: flex; gap: 32px; margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--border); }
+    .stat-val { font-size: 28px; font-weight: 800; color: var(--dark); letter-spacing: -1px; }
+    .stat-lab { font-size: 13px; color: var(--muted); font-weight: 500; margin-top: 2px; }
+
+    /* Dashboard mockup */
+    .hero-visual { position: relative; }
+    .dash-mock {
+      background: var(--dark2); border-radius: 16px; overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0,0,0,.2), 0 2px 8px rgba(0,0,0,.1);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .dash-topbar { background: var(--dark); padding: 12px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .dash-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .dash-title { font-size: 12px; color: rgba(255,255,255,.4); margin-left: auto; font-weight: 500; }
+    .dash-body { padding: 20px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .dash-card { background: rgba(255,255,255,.05); border-radius: 8px; padding: 16px; border: 1px solid rgba(255,255,255,.06); }
+    .dash-card-label { font-size: 10px; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+    .dash-card-val { font-size: 20px; font-weight: 800; color: white; letter-spacing: -.5px; }
+    .dash-card-sub { font-size: 10px; color: rgba(255,255,255,.3); margin-top: 3px; }
+    .dash-chart { grid-column: span 3; background: rgba(255,255,255,.03); border-radius: 8px; padding: 16px; border: 1px solid rgba(255,255,255,.06); height: 80px; display: flex; align-items: flex-end; gap: 6px; }
+    .bar { flex: 1; border-radius: 3px 3px 0 0; background: var(--blue2); opacity: .7; }
+
+    /* ── LOGOS ── */
+    .logos { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 32px 32px; }
+    .logos-inner { max-width: 1200px; margin: 0 auto; text-align: center; }
+    .logos p { font-size: 12px; color: var(--light); font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 24px; }
+    .logos-row { display: flex; justify-content: center; align-items: center; gap: 48px; flex-wrap: wrap; }
+    .logo-pill { padding: 8px 20px; border-radius: 8px; border: 1px solid var(--border); font-size: 13px; font-weight: 700; color: var(--light); letter-spacing: .5px; }
+
+    /* ── SECTION ── */
+    section { padding: 100px 32px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-tag { display: inline-block; background: #eff6ff; color: var(--blue); font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 16px; }
+    .section-h { font-size: clamp(28px, 3.5vw, 42px); font-weight: 800; letter-spacing: -1px; line-height: 1.15; margin-bottom: 16px; }
+    .section-sub { font-size: 17px; color: var(--muted); line-height: 1.7; max-width: 560px; }
+    .section-header { margin-bottom: 60px; }
+    .section-header.center { text-align: center; }
+    .section-header.center .section-sub { margin: 0 auto; }
+
+    /* ── PROBLEMS ── */
+    .problems { background: var(--bg); }
+    .problems-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .problem-cards { display: grid; gap: 12px; }
+    .problem-card { background: white; border-radius: var(--radius); padding: 20px 24px; border: 1px solid var(--border); display: flex; align-items: flex-start; gap: 16px; box-shadow: var(--shadow); transition: all .2s; }
+    .problem-card:hover { border-color: #bfdbfe; transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .problem-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .problem-icon.red { background: #fff1f2; }
+    .problem-icon.amber { background: #fffbeb; }
+    .problem-icon.blue { background: #eff6ff; }
+    .problem-title { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+    .problem-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    /* ── PRODUCTS ── */
+    .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .product-card { border-radius: 16px; padding: 32px; border: 1px solid var(--border); background: white; box-shadow: var(--shadow); transition: all .2s; position: relative; overflow: hidden; }
+    .product-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .product-card.care::before { background: linear-gradient(90deg, #1d4ed8, #0ea5e9); }
+    .product-card.restaurant::before { background: linear-gradient(90deg, #f59e0b, #f97316); }
+    .product-card.asset::before { background: linear-gradient(90deg, #8b5cf6, #6366f1); }
+    .product-card.coming::before { background: linear-gradient(90deg, #94a3b8, #cbd5e1); }
+    .product-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .product-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; }
+    .product-icon.care { background: #eff6ff; }
+    .product-icon.restaurant { background: #fffbeb; }
+    .product-icon.asset { background: #f5f3ff; }
+    .product-icon.coming { background: var(--bg); }
+    .product-name { font-size: 20px; font-weight: 800; color: var(--dark); margin-bottom: 4px; letter-spacing: -.3px; }
+    .product-tagline { font-size: 12px; font-weight: 600; color: var(--muted); margin-bottom: 12px; text-transform: uppercase; letter-spacing: .8px; }
+    .product-desc { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 24px; }
+    .product-features { display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px; }
+    .product-feat { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--slate); font-weight: 500; }
+    .feat-check { width: 18px; height: 18px; border-radius: 5px; background: #eff6ff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .feat-check.amber { background: #fffbeb; }
+    .feat-check.purple { background: #f5f3ff; }
+    .product-cta { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 700; color: var(--blue); transition: gap .15s; }
+    .product-cta:hover { gap: 10px; }
+    .coming-badge { display: inline-block; background: var(--bg); border: 1px solid var(--border); color: var(--light); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 12px; }
+
+    /* ── PLATFORM ── */
+    .platform { background: var(--dark); color: white; }
+    .platform .section-tag { background: rgba(96,165,250,.15); color: var(--sky); }
+    .platform .section-h { color: white; }
+    .platform .section-sub { color: rgba(255,255,255,.5); }
+    .platform-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .platform-card { background: rgba(255,255,255,.04); border-radius: var(--radius); padding: 24px; border: 1px solid rgba(255,255,255,.08); transition: all .2s; }
+    .platform-card:hover { background: rgba(255,255,255,.07); border-color: rgba(96,165,250,.3); }
+    .platform-card-icon { font-size: 22px; margin-bottom: 14px; }
+    .platform-card-title { font-size: 15px; font-weight: 700; color: white; margin-bottom: 8px; }
+    .platform-card-desc { font-size: 13px; color: rgba(255,255,255,.45); line-height: 1.6; }
+
+    /* ── DEMO CTA ── */
+    .demo-cta { background: linear-gradient(135deg, #1e3a8a 0%, #1d4ed8 50%, #0ea5e9 100%); color: white; text-align: center; padding: 100px 32px; }
+    .demo-cta .section-h { color: white; }
+    .demo-cta p { color: rgba(255,255,255,.75); font-size: 18px; margin-bottom: 40px; }
+    .demo-cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-white { padding: 14px 32px; border-radius: 10px; font-size: 15px; font-weight: 700; color: var(--blue); background: white; border: none; cursor: pointer; font-family: var(--font); transition: all .15s; }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+    .btn-outline-white { padding: 14px 32px; border-radius: 10px; font-size: 15px; font-weight: 600; color: white; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.25); cursor: pointer; font-family: var(--font); transition: all .15s; }
+    .btn-outline-white:hover { background: rgba(255,255,255,.18); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--dark); color: rgba(255,255,255,.5); padding: 60px 32px 32px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .footer-brand .logo { color: white; font-weight: 800; font-size: 18px; letter-spacing: -.4px; display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+    .footer-brand p { font-size: 14px; line-height: 1.7; max-width: 280px; }
+    .footer-col h4 { color: white; font-size: 13px; font-weight: 700; margin-bottom: 16px; letter-spacing: .3px; }
+    .footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,.45); margin-bottom: 10px; transition: color .15s; }
+    .footer-col a:hover { color: white; }
+    .footer-bottom { max-width: 1200px; margin: 24px auto 0; display: flex; justify-content: space-between; font-size: 12px; flex-wrap: wrap; gap: 12px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; gap: 48px; }
+      .hero-visual { display: none; }
+      .products-grid { grid-template-columns: 1fr 1fr; }
+      .platform-grid { grid-template-columns: 1fr 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .hero { padding: 60px 20px 40px; }
+      section { padding: 60px 20px; }
+      .nav-links { display: none; }
+      .products-grid { grid-template-columns: 1fr; }
+      .problems-grid { grid-template-columns: 1fr; }
+      .platform-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .hero-stats { flex-wrap: wrap; gap: 20px; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav id="navbar">
-    <div class="nav-inner">
-      <a href="/" class="logo">Raddecore ERP</a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#modules">Modules</a></li>
-        <li><a href="#demo">Live Demo</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="/ndis">NDIS</a></li>
-      </ul>
-      <div class="nav-ctas">
-        <a href="/auth/login" class="btn-ghost">Sign in</a>
-        <a href="/auth/signup" class="btn-primary">Start Free Trial</a>
-      </div>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg width="32" height="32" viewBox="0 0 80 80" fill="none">
+        <circle cx="40" cy="40" r="38" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+        <line x1="40" y1="40" x2="40" y2="8"  stroke="#3b82f6" stroke-width="3" opacity="0.5"/>
+        <line x1="40" y1="40" x2="67" y2="24" stroke="#3b82f6" stroke-width="3" opacity="0.5"/>
+        <line x1="40" y1="40" x2="67" y2="56" stroke="#3b82f6" stroke-width="3" opacity="0.5"/>
+        <line x1="40" y1="40" x2="40" y2="72" stroke="#3b82f6" stroke-width="3" opacity="0.5"/>
+        <line x1="40" y1="40" x2="13" y2="56" stroke="#3b82f6" stroke-width="3" opacity="0.5"/>
+        <line x1="40" y1="40" x2="13" y2="24" stroke="#3b82f6" stroke-width="3" opacity="0.5"/>
+        <circle cx="40" cy="8"  r="5" fill="#60a5fa"/>
+        <circle cx="67" cy="24" r="5" fill="#3b82f6"/>
+        <circle cx="67" cy="56" r="5" fill="#2563eb"/>
+        <circle cx="40" cy="72" r="5" fill="#1d4ed8"/>
+        <circle cx="13" cy="56" r="5" fill="#2563eb"/>
+        <circle cx="13" cy="24" r="5" fill="#3b82f6"/>
+        <polygon points="40,22 54,30 54,50 40,58 26,50 26,30" fill="#1e40af" opacity="0.1"/>
+        <polygon points="40,22 54,30 54,50 40,58 26,50 26,30" fill="none" stroke="#1d4ed8" stroke-width="2.5"/>
+        <circle cx="40" cy="40" r="13" fill="#1d4ed8"/>
+        <text x="40" y="45" text-anchor="middle" fill="white" font-family="'Plus Jakarta Sans',sans-serif" font-size="14" font-weight="700">R</text>
+      </svg>
+      <span>Radde<span style="color:#1d4ed8">Core</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#products">Products</a>
+      <a href="#platform">Platform</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/blog">Resources</a>
+      <a href="/raddecare">RaddeCare+</a>
     </div>
-  </nav>
+    <div class="nav-ctas">
+      <a href="https://app.raddecore.com" class="btn-ghost">Sign in</a>
+      <a href="https://demo.raddecore.com" class="btn-ghost">Live demo</a>
+      <a href="https://app.raddecore.com/auth/signup" class="btn-primary">Start free trial</a>
+    </div>
+  </div>
+</nav>
 
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-bg">
-      <div class="hero-orb orb-blue"></div>
-      <div class="hero-orb orb-purple"></div>
-      <div class="hero-orb orb-green"></div>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#1d4ed8" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#1d4ed8" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Trusted by NDIS providers &amp; hospitality groups
     </div>
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        Now available — Multi-tenant ERP for enterprise teams
-      </div>
-      <h1>Run your entire business with<br /><span class="grad-text">Raddecore ERP</span></h1>
-      <p class="hero-sub">One platform. Every department. Fully connected.</p>
-      <div class="hero-btns">
-        <a href="/auth/signup" class="btn-hero-primary">Start Free Trial <span class="arrow">→</span></a>
-        <a href="#demo" class="btn-hero-ghost">🖥 Try Live Demo</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat"><span class="stat-n" data-target="2400" data-prefix="">2,400+</span><span class="stat-l">Active businesses</span></div>
-        <div class="stat"><span class="stat-n">99.9%</span><span class="stat-l">Uptime SLA</span></div>
-        <div class="stat"><span class="stat-n">8</span><span class="stat-l">Core modules</span></div>
-        <div class="stat"><span class="stat-n">40+</span><span class="stat-l">Countries</span></div>
-      </div>
+    <h1>Business software built around your <span>industry</span></h1>
+    <p>RaddeCore is the enterprise platform powering industry-specific software for NDIS providers, restaurants, asset managers and more. One platform. Many solutions.</p>
+    <div class="hero-ctas">
+      <a href="https://app.raddecore.com/auth/signup" class="btn-hero-primary">
+        Start free trial
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="white" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </a>
+      <a href="https://demo.raddecore.com" class="btn-hero-secondary">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#64748b" stroke-width="1.5"/><path d="M6 5.5l5 2.5-5 2.5V5.5z" fill="#64748b"/></svg>
+        View live demo
+      </a>
     </div>
-
-    <!-- Dashboard Preview -->
-    <div class="dash-wrapper">
-      <div class="dash-frame">
-        <div class="dash-bar">
-          <span class="dot dot-red"></span>
-          <span class="dot dot-yellow"></span>
-          <span class="dot dot-green"></span>
-          <div class="dash-url">app.raddecore.com/dashboard</div>
-          <div style="width:48px"></div>
+    <div class="hero-stats">
+      <div><div class="stat-val">2,400+</div><div class="stat-lab">Businesses onboarded</div></div>
+      <div><div class="stat-val">99.9%</div><div class="stat-lab">Platform uptime</div></div>
+      <div><div class="stat-val">14-day</div><div class="stat-lab">Free trial, no card</div></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="dash-mock">
+      <div class="dash-topbar">
+        <div class="dash-dot" style="background:#ef4444"></div>
+        <div class="dash-dot" style="background:#f59e0b"></div>
+        <div class="dash-dot" style="background:#22c55e"></div>
+        <span class="dash-title">RaddeCore — Dashboard</span>
+      </div>
+      <div class="dash-body">
+        <div class="dash-card">
+          <div class="dash-card-label">Revenue today</div>
+          <div class="dash-card-val">$8,420</div>
+          <div class="dash-card-sub">↑ 12% vs yesterday</div>
         </div>
-        <div class="dash-layout">
-          <aside class="dash-sidebar">
-            <span class="sidebar-brand">Raddecore</span>
-            <nav class="sidebar-nav">
-              <a href="#" class="s-item active">📊 Dashboard</a>
-              <a href="#" class="s-item">💰 Accounting</a>
-              <a href="#" class="s-item">📦 Inventory</a>
-              <a href="#" class="s-item">👥 CRM</a>
-              <a href="#" class="s-item">🏢 HR & Payroll</a>
-              <a href="#" class="s-item">🍽 Restaurant</a>
-              <a href="#" class="s-item">📈 Reports</a>
-              <a href="#" class="s-item">⚙ Settings</a>
-            </nav>
-          </aside>
-          <main class="dash-main">
-            <div class="kpi-grid" id="kpiGrid">
-              <div class="kpi-card">
-                <div class="kpi-val" id="kpi-rev">$0</div>
-                <div class="kpi-lbl">Revenue (MTD)</div>
-                <div class="kpi-chg positive">↑ 12.4%</div>
-              </div>
-              <div class="kpi-card">
-                <div class="kpi-val" id="kpi-orders">0</div>
-                <div class="kpi-lbl">Active Orders</div>
-                <div class="kpi-chg positive">↑ 8.1%</div>
-              </div>
-              <div class="kpi-card">
-                <div class="kpi-val" id="kpi-cust">0</div>
-                <div class="kpi-lbl">Customers</div>
-                <div class="kpi-chg positive">↑ 3.7%</div>
-              </div>
-              <div class="kpi-card">
-                <div class="kpi-val" id="kpi-margin">0%</div>
-                <div class="kpi-lbl">Gross Margin</div>
-                <div class="kpi-chg positive">↑ 0.9%</div>
-              </div>
-            </div>
-            <div class="chart-card">
-              <div class="chart-hdr">
-                <span class="chart-title">Revenue — last 7 months</span>
-                <span class="chart-legend"><span class="leg-dot" style="background:#4f8cff"></span>Product <span class="leg-dot" style="background:#7c5cfc;margin-left:8px"></span>Services</span>
-              </div>
-              <div class="bar-chart" id="barChart"></div>
-            </div>
-          </main>
+        <div class="dash-card">
+          <div class="dash-card-label">Active workers</div>
+          <div class="dash-card-val">34</div>
+          <div class="dash-card-sub">4 on leave</div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-card-label">Compliance</div>
+          <div class="dash-card-val" style="color:#22c55e">98%</div>
+          <div class="dash-card-sub">2 expiring soon</div>
+        </div>
+        <div class="dash-chart">
+          <div class="bar" style="height:30%"></div>
+          <div class="bar" style="height:55%"></div>
+          <div class="bar" style="height:40%"></div>
+          <div class="bar" style="height:70%"></div>
+          <div class="bar" style="height:50%"></div>
+          <div class="bar" style="height:85%"></div>
+          <div class="bar" style="height:65%;opacity:1;background:#60a5fa"></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- SOCIAL PROOF -->
-  <section class="logos-section">
-    <p class="logos-label">Trusted by businesses across industries</p>
+<!-- LOGOS -->
+<div class="logos">
+  <div class="logos-inner">
+    <p>Trusted across industries</p>
     <div class="logos-row">
-      <span class="logo-badge">🏨 Meridian Hotels</span>
-      <span class="logo-badge">🛒 FreshMart</span>
-      <span class="logo-badge">🍕 PizzaCraft</span>
-      <span class="logo-badge">🏗 Apex Construction</span>
-      <span class="logo-badge">💊 MediCare Plus</span>
-      <span class="logo-badge">📚 EduBridge</span>
+      <div class="logo-pill">NDIS Providers</div>
+      <div class="logo-pill">Restaurants & Cafés</div>
+      <div class="logo-pill">Aged Care</div>
+      <div class="logo-pill">Hospitality Groups</div>
+      <div class="logo-pill">Asset Managers</div>
+      <div class="logo-pill">Healthcare Clinics</div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- MODULES -->
-  <section id="modules">
-    <div class="section-header">
-      <div class="section-tag">Core Modules</div>
-      <h2 class="section-h">Everything your business needs,<br /><span class="grad-text">built in</span></h2>
-      <p class="section-sub">Eight fully integrated modules sharing one data layer — no siloed spreadsheets, no manual syncing.</p>
-    </div>
-    <div class="modules-grid" id="modulesGrid"></div>
-  </section>
-
-  <!-- DEMO GATEWAY -->
-  <section id="demo">
-    <div class="demo-glow"></div>
-    <div class="section-header" style="position:relative;z-index:1">
-      <div class="section-tag">Live Sandbox</div>
-      <h2 class="section-h">Try <span class="grad-text">Raddecore</span> right now</h2>
-      <p class="section-sub">Explore a fully loaded demo environment with real data. No credit card required.</p>
-    </div>
-    <div class="demo-box">
-      <div class="sandbox-banner">
-        <span>⚠</span>
-        You are entering a live sandbox environment — data resets every 24 hours
+<!-- PROBLEMS -->
+<section class="problems" id="problems">
+  <div class="section-inner">
+    <div class="problems-grid">
+      <div>
+        <div class="section-tag">The problem</div>
+        <h2 class="section-h">Generic software wasn't built for your industry</h2>
+        <p class="section-sub">Most business software forces you to adapt your operations to fit the tool. RaddeCore products are built around how your specific industry actually works — from SCHADS award calculations to kitchen display systems.</p>
+        <br/>
+        <a href="#products" class="btn-hero-primary" style="display:inline-flex">See our solutions →</a>
       </div>
-      <div class="demo-url-bar">
-        <span class="url-dot"></span>
-        https://demo.raddecore.com
-        <button class="copy-btn" onclick="copyDemoUrl()">Copy</button>
-      </div>
-      <div class="creds-box">
-        <div class="creds-label">Demo Credentials</div>
-        <div class="cred-row"><span class="cred-key">Email</span><span class="cred-val">demo@raddecore.com</span></div>
-        <div class="cred-row"><span class="cred-key">Password</span><span class="cred-val">Demo@2025!</span></div>
-        <div class="cred-row"><span class="cred-key">Role</span><span class="cred-val">Admin (full access)</span></div>
-      </div>
-      <div class="demo-actions">
-        <a href="https://demo.raddecore.com" target="_blank" class="btn-hero-primary" style="flex:1;text-align:center">Launch Demo →</a>
-        <a href="/auth/signup" class="btn-hero-ghost" style="flex:1;text-align:center">Start Free Trial</a>
-      </div>
-      <div class="demo-features">
-        <div class="df">✓ Full admin access</div>
-        <div class="df">✓ 6 months of sample data</div>
-        <div class="df">✓ All 8 modules enabled</div>
-        <div class="df">✓ No setup required</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PRICING -->
-  <section id="pricing">
-    <div class="section-header">
-      <div class="section-tag">Pricing</div>
-      <h2 class="section-h">Simple, transparent pricing</h2>
-      <p class="section-sub">Scale your plan as your business grows. No hidden fees, no surprises.</p>
-    </div>
-    <div class="billing-toggle">
-      <button class="toggle-opt active" id="btnMonthly" onclick="setBilling('monthly')">Monthly</button>
-      <button class="toggle-opt" id="btnYearly" onclick="setBilling('yearly')">Yearly</button>
-      <span class="save-tag">Save 20%</span>
-    </div>
-    <div class="plans-grid" id="plansGrid"></div>
-    <div class="compare-table-wrap">
-      <div class="compare-label">Full feature comparison</div>
-      <table class="compare-table" id="compareTable"></table>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section id="testimonials">
-    <div class="section-header">
-      <div class="section-tag">Testimonials</div>
-      <h2 class="section-h">Loved by operators worldwide</h2>
-    </div>
-    <div class="testimonials-grid" id="testimonialsGrid"></div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="about-inner">
-      <div class="about-text">
-        <div class="section-tag">About Raddecore</div>
-        <h2 class="section-h">Built for the way modern<br /><span class="grad-text">businesses actually work</span></h2>
-        <p class="section-sub">Legacy ERPs were built for a different era — expensive, rigid, and painful to deploy. Raddecore is designed from scratch as a cloud-native, multi-tenant SaaS platform that's fast to set up and easy to extend.</p>
-        <ul class="about-list">
-          <li>Multi-tenant architecture with complete tenant isolation</li>
-          <li>Role-based access control with fine-grained permissions</li>
-          <li>SOC 2 Type II compliant infrastructure</li>
-          <li>99.9% uptime backed by SLA</li>
-          <li>Open API — connect anything</li>
-        </ul>
-        <a href="/auth/signup" class="btn-hero-primary" style="display:inline-flex;margin-top:32px">Get started free →</a>
-      </div>
-      <div class="about-visual">
-        <div class="about-card">
-          <div class="ac-row"><span class="ac-label">Architecture</span><span class="ac-val green">Multi-tenant SaaS</span></div>
-          <div class="ac-row"><span class="ac-label">Hosting</span><span class="ac-val">AWS + CloudFront CDN</span></div>
-          <div class="ac-row"><span class="ac-label">Database</span><span class="ac-val">PostgreSQL (isolated)</span></div>
-          <div class="ac-row"><span class="ac-label">Auth</span><span class="ac-val">JWT + OAuth 2.0</span></div>
-          <div class="ac-row"><span class="ac-label">Compliance</span><span class="ac-val green">SOC 2 · GDPR · ISO 27001</span></div>
-          <div class="ac-row"><span class="ac-label">API</span><span class="ac-val">REST + Webhooks</span></div>
-          <div class="ac-row"><span class="ac-label">Uptime</span><span class="ac-val green">99.9% SLA</span></div>
+      <div class="problem-cards">
+        <div class="problem-card">
+          <div class="problem-icon red">⚠️</div>
+          <div>
+            <div class="problem-title">SCHADS payroll errors cost you thousands</div>
+            <div class="problem-desc">Manual award calculations lead to underpayments, ATO penalties and worker disputes.</div>
+          </div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon amber">📋</div>
+          <div>
+            <div class="problem-title">Compliance risks during NDIS audits</div>
+            <div class="problem-desc">Scattered documents, expired qualifications and missing incident reports fail audits.</div>
+          </div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon blue">💸</div>
+          <div>
+            <div class="problem-title">Labour costs eating restaurant margins</div>
+            <div class="problem-desc">Without real-time visibility, overstaffing and overtime silently drain profitability.</div>
+          </div>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon red">🔄</div>
+          <div>
+            <div class="problem-title">Billing errors in NDIS invoicing</div>
+            <div class="problem-desc">Wrong support item codes, missed cancellations and incorrect group ratios cause claim rejections.</div>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CTA -->
-  <section id="cta">
-    <div class="cta-card">
-      <div class="cta-glow"></div>
-      <h2 class="section-h" style="position:relative;z-index:1">Ready to transform your <span class="grad-text">operations?</span></h2>
-      <p class="section-sub" style="margin:0 auto 36px;position:relative;z-index:1">Join 2,400+ businesses already running on Raddecore ERP. Start your 14-day free trial today — no credit card needed.</p>
-      <div class="cta-btns">
-        <a href="/auth/signup" class="btn-hero-primary">Start Free Trial</a>
-        <a href="/contact/sales" class="btn-hero-ghost">Talk to Sales</a>
-      </div>
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="section-inner">
+    <div class="section-header center">
+      <div class="section-tag">Our products</div>
+      <h2 class="section-h">One platform. Industry-specific solutions.</h2>
+      <p class="section-sub">Each RaddeCore product is purpose-built for its industry — with the terminology, workflows and compliance requirements your team already knows.</p>
     </div>
-  </section>
+    <div class="products-grid">
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <span class="logo">Raddecore ERP</span>
-        <p>The enterprise ERP platform built for modern, fast-moving businesses. One platform, every department.</p>
-        <div class="footer-socials">
-          <a href="#">LinkedIn</a>
-          <a href="#">Twitter</a>
-          <a href="#">GitHub</a>
+      <!-- RaddeCare+ -->
+      <div class="product-card care">
+        <div class="product-icon care">🏥</div>
+        <div class="product-name">RaddeCare+</div>
+        <div class="product-tagline">NDIS Practice Management</div>
+        <p class="product-desc">Complete end-to-end NDIS practice management — from rostering and SCHADS payroll to billing, compliance and participant management.</p>
+        <div class="product-features">
+          <div class="product-feat"><div class="feat-check">✓</div>SCHADS Award engine</div>
+          <div class="product-feat"><div class="feat-check">✓</div>NDIS billing & invoicing</div>
+          <div class="product-feat"><div class="feat-check">✓</div>Compliance & document management</div>
+          <div class="product-feat"><div class="feat-check">✓</div>Xero integration</div>
+          <div class="product-feat"><div class="feat-check">✓</div>Worker mobile app</div>
         </div>
+        <a href="/raddecare" class="product-cta">Explore RaddeCare+ →</a>
       </div>
-      <div class="footer-col"><h4>Product</h4><a href="#modules">Features</a><a href="#pricing">Pricing</a><a href="#demo">Live Demo</a><a href="/changelog">Changelog</a><a href="/docs">Documentation</a></div>
-      <div class="footer-col"><h4>Company</h4><a href="#about">About</a><a href="/blog">Blog</a><a href="/careers">Careers</a><a href="/contact">Contact</a></div>
-      <div class="footer-col"><h4>Legal</h4><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Service</a><a href="/security">Security</a><a href="/gdpr">GDPR</a></div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2025 Raddecore ERP. All rights reserved.</span>
-      <span>raddecore.com</span>
-    </div>
-  </footer>
 
-  <script src="src/lib/main.js"></script>
+      <!-- RaddeServe -->
+      <div class="product-card restaurant">
+        <div class="product-icon restaurant">🍽️</div>
+        <div class="product-name">RaddeServe</div>
+        <div class="product-tagline">Restaurant Operations</div>
+        <p class="product-desc">Floor plan to kitchen display — everything your restaurant needs to run efficiently, reduce costs and deliver exceptional guest experiences.</p>
+        <div class="product-features">
+          <div class="product-feat"><div class="feat-check amber">✓</div>Table & floor management</div>
+          <div class="product-feat"><div class="feat-check amber">✓</div>Kitchen display system</div>
+          <div class="product-feat"><div class="feat-check amber">✓</div>Inventory & supplier orders</div>
+          <div class="product-feat"><div class="feat-check amber">✓</div>Labour cost tracking</div>
+          <div class="product-feat"><div class="feat-check amber">✓</div>Multi-site management</div>
+        </div>
+        <a href="/raddeserve" class="product-cta" style="color:#f59e0b">Explore RaddeServe →</a>
+      </div>
+
+      <!-- RaddeOne -->
+      <div class="product-card asset">
+        <div class="product-icon asset">⚙️</div>
+        <div class="product-name">RaddeOne</div>
+        <div class="product-tagline">Service Business Platform</div>
+        <p class="product-desc">Track, maintain and optimise physical assets across multiple sites. Preventative maintenance scheduling, work orders and compliance reporting.</p>
+        <div class="product-features">
+          <div class="product-feat"><div class="feat-check purple">✓</div>Asset register & tracking</div>
+          <div class="product-feat"><div class="feat-check purple">✓</div>Preventative maintenance</div>
+          <div class="product-feat"><div class="feat-check purple">✓</div>Work order management</div>
+          <div class="product-feat"><div class="feat-check purple">✓</div>Compliance reporting</div>
+          <div class="product-feat"><div class="feat-check purple">✓</div>Mobile field app</div>
+        </div>
+        <a href="/raddeone" class="product-cta" style="color:#8b5cf6">Explore RaddeOne →</a>
+      </div>
+
+      <!-- Coming soon cards -->
+      <div class="product-card coming">
+        <div class="product-icon coming">🏗️</div>
+        <div class="coming-badge">Coming soon</div>
+        <div class="product-name" style="color:var(--muted)">TradeFlow</div>
+        <div class="product-tagline">Trade & Field Services</div>
+        <p class="product-desc">Job scheduling, quoting, invoicing and compliance for trade businesses.</p>
+      </div>
+
+      <div class="product-card coming">
+        <div class="product-icon coming">🚚</div>
+        <div class="coming-badge">Coming soon</div>
+        <div class="product-name" style="color:var(--muted)">FleetFlow</div>
+        <div class="product-tagline">Fleet Management</div>
+        <p class="product-desc">Vehicle tracking, maintenance scheduling and driver compliance.</p>
+      </div>
+
+      <div class="product-card coming">
+        <div class="product-icon coming">🏥</div>
+        <div class="coming-badge">Coming soon</div>
+        <div class="product-name" style="color:var(--muted)">ClinicFlow</div>
+        <div class="product-tagline">Allied Health & Clinics</div>
+        <p class="product-desc">Patient management, bulk billing, Medicare compliance and clinical workflows.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORM -->
+<section class="platform" id="platform">
+  <div class="section-inner">
+    <div class="section-header center">
+      <div class="section-tag">The platform</div>
+      <h2 class="section-h" style="color:white">Enterprise-grade infrastructure under every product</h2>
+      <p class="section-sub">Every RaddeCore product runs on the same battle-tested platform — so you get enterprise security, reliability and scalability regardless of which solution you use.</p>
+    </div>
+    <div class="platform-grid">
+      <div class="platform-card">
+        <div class="platform-card-icon">🔒</div>
+        <div class="platform-card-title">Enterprise security</div>
+        <div class="platform-card-desc">SOC 2 compliant, data encrypted at rest and in transit. Role-based access control with full audit trails.</div>
+      </div>
+      <div class="platform-card">
+        <div class="platform-card-icon">🌐</div>
+        <div class="platform-card-title">Multi-tenant isolation</div>
+        <div class="platform-card-desc">Your data is completely isolated from other organisations. Zero cross-tenant data access by design.</div>
+      </div>
+      <div class="platform-card">
+        <div class="platform-card-icon">⚡</div>
+        <div class="platform-card-title">99.9% uptime SLA</div>
+        <div class="platform-card-desc">Built on enterprise cloud infrastructure with automatic failover, backups and disaster recovery.</div>
+      </div>
+      <div class="platform-card">
+        <div class="platform-card-icon">🔗</div>
+        <div class="platform-card-title">Deep integrations</div>
+        <div class="platform-card-desc">Connects with Xero, Stripe, Twilio, NDIA price catalogues and your existing tools via open API.</div>
+      </div>
+      <div class="platform-card">
+        <div class="platform-card-icon">📱</div>
+        <div class="platform-card-title">Mobile-first</div>
+        <div class="platform-card-desc">Full-featured mobile apps for workers, managers and field staff — offline capable, real-time sync.</div>
+      </div>
+      <div class="platform-card">
+        <div class="platform-card-icon">📊</div>
+        <div class="platform-card-title">Real-time analytics</div>
+        <div class="platform-card-desc">Live dashboards, scheduled reports and custom KPIs across every module and location.</div>
+      </div>
+      <div class="platform-card">
+        <div class="platform-card-icon">🤖</div>
+        <div class="platform-card-title">AI-powered intelligence</div>
+        <div class="platform-card-desc">Intelligent rostering suggestions, anomaly detection and predictive compliance alerts.</div>
+      </div>
+      <div class="platform-card">
+        <div class="platform-card-icon">🏢</div>
+        <div class="platform-card-title">Multi-location ready</div>
+        <div class="platform-card-desc">Manage unlimited branches, locations and entities from a single consolidated platform.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO CTA -->
+<section class="demo-cta">
+  <div class="section-inner">
+    <div class="section-tag" style="background:rgba(255,255,255,.15);color:white;margin-bottom:24px">Get started today</div>
+    <h2 class="section-h" style="color:white;margin-bottom:16px">See RaddeCore in action</h2>
+    <p>Try our fully interactive demo — no account required. Or start your 14-day free trial and get up and running in under 30 minutes.</p>
+    <div class="demo-cta-btns">
+      <a href="https://app.raddecore.com/auth/signup" class="btn-white">Start free trial — no card required</a>
+      <a href="https://demo.raddecore.com" class="btn-outline-white">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="display:inline;vertical-align:middle;margin-right:6px"><circle cx="8" cy="8" r="7" stroke="white" stroke-width="1.5"/><path d="M6 5.5l5 2.5-5 2.5V5.5z" fill="white"/></svg>
+        View live demo
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">
+        <svg width="28" height="28" viewBox="0 0 80 80" fill="none">
+          <circle cx="40" cy="40" r="36" fill="#1e3a8a" opacity="0.5"/>
+          <polygon points="40,22 54,30 54,50 40,58 26,50 26,30" fill="none" stroke="#60a5fa" stroke-width="2.5"/>
+          <circle cx="40" cy="40" r="12" fill="#3b82f6"/>
+          <text x="40" y="45" text-anchor="middle" fill="white" font-family="'Plus Jakarta Sans',sans-serif" font-size="13" font-weight="700">R</text>
+        </svg>
+        Radde<span style="color:#60a5fa">Core</span>
+      </div>
+      <p>Enterprise business software built around your industry. Powered by NewEraTechServices Pty Ltd.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Products</h4>
+      <a href="/raddecare">RaddeCare+ — NDIS</a>
+      <a href="/raddeserve">RaddeServe</a>
+      <a href="/raddeone">RaddeOne</a>
+      <a href="/pricing">Pricing</a>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <a href="https://demo.raddecore.com">Live Demo</a>
+      <a href="https://app.raddecore.com">Sign in</a>
+      <a href="https://app.raddecore.com/auth/signup">Start trial</a>
+      <a href="/docs">Documentation</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="/about">About</a>
+      <a href="/blog">Blog</a>
+      <a href="/contact">Contact</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 NewEraTechServices Pty Ltd. All rights reserved. RaddeCore® is a registered trademark.</span>
+    <span>ABN 18 689 475 152</span>
+  </div>
+</footer>
+
 </body>
 </html>
