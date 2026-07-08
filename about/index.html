@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>About — NewEraTechServices & RaddeCore</title>
+  <meta name="description" content="NewEraTechServices Pty Ltd is an Australian software company building industry-specific enterprise platforms. Learn about our mission, team and story."/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --blue:#1d4ed8;--blue2:#3b82f6;--sky:#60a5fa;
+    --dark:#0f172a;--dark2:#1e293b;--slate:#334155;--muted:#64748b;
+    --light:#94a3b8;--border:#e2e8f0;--bg:#f8fafc;--white:#fff;
+    --font:'Plus Jakarta Sans',-apple-system,sans-serif;
+    --radius:12px;
+    --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.04);
+    --shadow-lg:0 8px 40px rgba(0,0,0,.1);
+  }
+  body{font-family:var(--font);background:var(--white);color:var(--dark);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{text-decoration:none;color:inherit}
+  nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+  .nav-inner{max-width:1200px;margin:0 auto;padding:0 32px;display:flex;align-items:center;height:64px;gap:24px}
+  .nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;color:var(--dark);white-space:nowrap}
+  .nav-links{display:flex;gap:2px;flex:1}
+  .nav-links a{padding:6px 12px;border-radius:8px;font-size:13px;font-weight:500;color:var(--slate);transition:all .15s}
+  .nav-links a:hover{background:var(--bg);color:var(--dark)}
+  .nav-ctas{display:flex;gap:8px;align-items:center;margin-left:auto;white-space:nowrap}
+  .btn-ghost{padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;color:var(--slate);border:1px solid var(--border);background:none;cursor:pointer;font-family:var(--font);transition:all .15s}
+  .btn-ghost:hover{background:var(--bg)}
+  .btn-primary{padding:8px 18px;border-radius:8px;font-size:13px;font-weight:700;color:white;background:var(--blue);border:none;cursor:pointer;font-family:var(--font);transition:all .15s}
+  .btn-primary:hover{background:#1e40af;transform:translateY(-1px)}
+  footer{background:var(--dark);padding:48px 32px 24px}
+  .footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:32px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .footer-brand{font-weight:800;font-size:17px;color:white}
+  .footer-brand p{font-size:13px;color:rgba(255,255,255,.4);margin-top:10px;max-width:280px;line-height:1.6;font-weight:400}
+  .footer-links{display:flex;gap:48px}
+  .footer-col h4{font-size:12px;font-weight:700;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
+  .footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.45);margin-bottom:10px;transition:color .15s}
+  .footer-col a:hover{color:white}
+  .footer-bottom{max-width:1200px;margin:20px auto 0;font-size:12px;color:rgba(255,255,255,.28);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  @media(max-width:768px){.nav-links{display:none}.footer-links{flex-direction:column;gap:24px}}
+
+    .hero{background:linear-gradient(160deg,#eff6ff 0%,#fff 60%);padding:80px 32px 60px;border-bottom:1px solid var(--border)}
+    .hero-inner{max-width:1200px;margin:0 auto;text-align:center}
+    .tag{display:inline-block;background:#eff6ff;color:var(--blue);font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+    .hero h1{font-size:clamp(32px,4vw,52px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;margin-bottom:18px}
+    .hero h1 span{color:var(--blue)}
+    .hero p{font-size:18px;color:var(--muted);max-width:600px;margin:0 auto;line-height:1.75}
+    section{padding:80px 32px}
+    .si{max-width:1200px;margin:0 auto}
+    .sh{font-size:clamp(24px,3vw,36px);font-weight:800;letter-spacing:-1px;margin-bottom:14px}
+    .ss{font-size:16px;color:var(--muted);line-height:1.75;max-width:600px}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+    .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+    .val{background:var(--bg);border-radius:var(--radius);padding:28px;border:1px solid var(--border)}
+    .val-icon{font-size:28px;margin-bottom:14px}
+    .val-title{font-size:16px;font-weight:800;margin-bottom:8px}
+    .val-desc{font-size:14px;color:var(--muted);line-height:1.65}
+    .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px}
+    .team-card{background:white;border:1px solid var(--border);border-radius:16px;padding:28px;box-shadow:var(--shadow);text-align:center}
+    .team-avatar{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800;color:white;margin:0 auto 16px}
+    .team-name{font-size:17px;font-weight:800;margin-bottom:4px}
+    .team-role{font-size:13px;color:var(--blue);font-weight:600;margin-bottom:10px}
+    .team-bio{font-size:13px;color:var(--muted);line-height:1.6}
+    .timeline{display:flex;flex-direction:column;gap:0;margin-top:44px;position:relative}
+    .timeline::before{content:'';position:absolute;left:24px;top:0;bottom:0;width:2px;background:var(--border)}
+    .tl-item{display:flex;gap:32px;padding-bottom:40px;position:relative}
+    .tl-dot{width:50px;height:50px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:12px;flex-shrink:0;position:relative;z-index:1}
+    .tl-content{padding-top:10px}
+    .tl-year{font-size:12px;font-weight:700;color:var(--blue);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+    .tl-title{font-size:16px;font-weight:800;margin-bottom:6px}
+    .tl-desc{font-size:14px;color:var(--muted);line-height:1.6}
+    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:44px}
+    .stat{background:white;border-radius:var(--radius);padding:24px;border:1px solid var(--border);box-shadow:var(--shadow);text-align:center}
+    .stat-num{font-size:36px;font-weight:800;letter-spacing:-1px;color:var(--blue);margin-bottom:6px}
+    .stat-label{font-size:13px;color:var(--muted);font-weight:500}
+    .cta-band{background:var(--blue);color:white;padding:60px 32px;text-align:center}
+    .cta-band h2{font-size:32px;font-weight:800;letter-spacing:-1px;margin-bottom:12px}
+    .cta-band p{font-size:16px;color:rgba(255,255,255,.8);margin-bottom:28px}
+    .cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .btn-w{padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;color:var(--blue);background:white;border:none;cursor:pointer;font-family:var(--font);transition:all .15s}
+    .btn-w:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+    .btn-ol{padding:12px 28px;border-radius:10px;font-size:14px;font-weight:600;color:white;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);cursor:pointer;font-family:var(--font)}
+    @media(max-width:768px){.grid-2,.values-grid,.team-grid,.stats-row{grid-template-columns:1fr}section{padding:56px 20px}}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg width="30" height="30" viewBox="0 0 80 80" fill="none">
+        <line x1="40" y1="40" x2="40" y2="8" stroke="#3b82f6" stroke-width="3" opacity="0.5"/>
+        <line x1="40" y1="40" x2="67" y2="24" stroke="#3b82f6" stroke-width="3" opacity="0.5"/>
+        <line x1="40" y1="40" x2="67" y2="56" stroke="#3b82f6" stroke-width="3" opacity="0.5"/>
+        <line x1="40" y1="40" x2="40" y2="72" stroke="#3b82f6" stroke-width="3" opacity="0.5"/>
+        <line x1="40" y1="40" x2="13" y2="56" stroke="#3b82f6" stroke-width="3" opacity="0.5"/>
+        <line x1="40" y1="40" x2="13" y2="24" stroke="#3b82f6" stroke-width="3" opacity="0.5"/>
+        <circle cx="40" cy="8" r="5" fill="#60a5fa"/>
+        <circle cx="67" cy="24" r="5" fill="#3b82f6"/>
+        <circle cx="67" cy="56" r="5" fill="#2563eb"/>
+        <circle cx="40" cy="72" r="5" fill="#1d4ed8"/>
+        <circle cx="13" cy="56" r="5" fill="#2563eb"/>
+        <circle cx="13" cy="24" r="5" fill="#3b82f6"/>
+        <polygon points="40,22 54,30 54,50 40,58 26,50 26,30" fill="none" stroke="#1d4ed8" stroke-width="2.5"/>
+        <circle cx="40" cy="40" r="13" fill="#1d4ed8"/>
+        <text x="40" y="45" text-anchor="middle" fill="white" font-family="sans-serif" font-size="14" font-weight="700">R</text>
+      </svg>
+      <span>Radde<span style="color:#1d4ed8">Core</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/#products">Products</a>
+      <a href="/raddecare">RaddeCare+</a>
+      <a href="/raddeserve">RaddeServe</a>
+      <a href="/raddeone">RaddeOne</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <div class="nav-ctas">
+      <a href="https://app.raddecore.com" class="btn-ghost">Sign in</a>
+      <a href="https://demo.raddecore.com" class="btn-ghost">Demo</a>
+      <a href="https://app.raddecore.com/auth/signup" class="btn-primary">Start free trial</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="tag">About us</div>
+    <h1>Building the future of <span>Australian business software</span></h1>
+    <p>NewEraTechServices is an Australian technology company on a mission to give every industry purpose-built software — not generic tools that don't fit.</p>
+  </div>
+</div>
+
+<!-- MISSION -->
+<section>
+  <div class="si">
+    <div class="grid-2">
+      <div>
+        <div class="tag">Our mission</div>
+        <h2 class="sh">Software that works the way your industry actually works</h2>
+        <p class="ss">Most business software forces you to adapt your operations to fit the tool. We believe it should be the other way around. Every RaddeCore product is built ground-up for its industry — with the terminology, compliance rules and workflows your team already knows.</p>
+        <br/>
+        <p class="ss">We started with NDIS — because we saw firsthand how SCHADS Award complexity, NDIS billing rules and compliance requirements were breaking providers who deserved better tools. Then restaurants. Then retail. Each vertical gets the same treatment: deep domain knowledge translated into software that just works.</p>
+      </div>
+      <div>
+        <div class="stats-row" style="grid-template-columns:1fr 1fr;margin-top:0">
+          <div class="stat"><div class="stat-num">3</div><div class="stat-label">Industry verticals launched</div></div>
+          <div class="stat"><div class="stat-num">AU</div><div class="stat-label">Built in Australia, for Australia</div></div>
+          <div class="stat"><div class="stat-num">99.9%</div><div class="stat-label">Platform uptime SLA</div></div>
+          <div class="stat"><div class="stat-num">7-day</div><div class="stat-label">Free trial, every plan</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section style="background:var(--bg)">
+  <div class="si">
+    <div style="text-align:center;margin-bottom:0">
+      <div class="tag">Our values</div>
+      <h2 class="sh">What we stand for</h2>
+    </div>
+    <div class="values-grid">
+      <div class="val">
+        <div class="val-icon">🎯</div>
+        <div class="val-title">Industry-first thinking</div>
+        <div class="val-desc">We don't build generic tools and call them industry-specific. Every product is built with deep domain expertise — SCHADS award tables, NDIS billing rules, restaurant operations. Real knowledge, not templates.</div>
+      </div>
+      <div class="val">
+        <div class="val-icon">🔒</div>
+        <div class="val-title">Security & compliance by default</div>
+        <div class="val-desc">Immutable audit trails, role-based access, encrypted data at rest and in transit, multi-tenant isolation. Security isn't a feature we bolt on — it's foundational to how we build.</div>
+      </div>
+      <div class="val">
+        <div class="val-icon">⚡</div>
+        <div class="val-title">Radical simplicity</div>
+        <div class="val-desc">Powerful software doesn't have to be complicated. We sweat the UX details so your team can get up and running in hours, not weeks. No 3-day implementations. No consultants required.</div>
+      </div>
+      <div class="val">
+        <div class="val-icon">🤝</div>
+        <div class="val-title">Honest pricing</div>
+        <div class="val-desc">No hidden fees, no per-module add-ons that nickel-and-dime you. One price, all the features for your plan. We'd rather earn your trust than trap you in a contract.</div>
+      </div>
+      <div class="val">
+        <div class="val-icon">🇦🇺</div>
+        <div class="val-title">Built for Australia</div>
+        <div class="val-desc">GST, BAS, STP Phase 2, SCHADS Award, NDIS price catalogues, superannuation — Australian compliance is built in, not patched on. This is software that understands your regulatory environment.</div>
+      </div>
+      <div class="val">
+        <div class="val-icon">🚀</div>
+        <div class="val-title">Continuous improvement</div>
+        <div class="val-desc">We ship fast, listen carefully and iterate constantly. Our customers shape the product roadmap. If something doesn't work for your workflow, we want to know — and we'll fix it.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY / TIMELINE -->
+<section>
+  <div class="si">
+    <div class="tag">Our story</div>
+    <h2 class="sh">How we got here</h2>
+    <p class="ss">From a single-file HTML app to a multi-vertical enterprise platform.</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">2022</div>
+        <div class="tl-content">
+          <div class="tl-year">2022</div>
+          <div class="tl-title">The beginning</div>
+          <div class="tl-desc">NewEraTechServices was founded in Australia with a simple idea: build business software that actually fits the industry it serves. First project — a retail ERP for a small cosmetics business.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">2023</div>
+        <div class="tl-content">
+          <div class="tl-year">2023</div>
+          <div class="tl-title">RaddeCore platform born</div>
+          <div class="tl-desc">Rebuilt from scratch as a multi-tenant SaaS platform with Fastify, PostgreSQL and React. Launched the retail vertical with hospitality features including restaurant POS, table management and kitchen display.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">2024</div>
+        <div class="tl-content">
+          <div class="tl-year">2024</div>
+          <div class="tl-title">RaddeCare+ launches</div>
+          <div class="tl-desc">Identified the massive gap in NDIS practice management software. Built the complete SCHADS Award engine (152+ rate entries, all 4 streams), NDIS billing, compliance management and Xero integration from the ground up.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot">2025</div>
+        <div class="tl-content">
+          <div class="tl-year">2025</div>
+          <div class="tl-title">Three verticals. One platform.</div>
+          <div class="tl-desc">RaddeCare+ (NDIS), RaddeServe (Restaurant) and RaddeOne (Retail) are live and serving customers across Australia. The platform now handles SCHADS payroll, NDIS billing, KDS, floor plans, double-entry accounting and more.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#94a3b8">→</div>
+        <div class="tl-content">
+          <div class="tl-year">Coming soon</div>
+          <div class="tl-title">TradeFlow · FleetFlow · ClinicFlow</div>
+          <div class="tl-desc">Trades & field services, fleet management and allied health verticals are in development. The platform continues to expand — same enterprise foundation, new industry-specific workflows.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section style="background:var(--bg)">
+  <div class="si">
+    <div style="text-align:center;margin-bottom:0">
+      <div class="tag">The team</div>
+      <h2 class="sh">The people building RaddeCore</h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar" style="background:#1d4ed8">MA</div>
+        <div class="team-name">Mohammad Taimoor Ali</div>
+        <div class="team-role">Founder & CEO</div>
+        <div class="team-bio">ICT Business Analyst and GIS specialist with deep experience in critical infrastructure and enterprise systems. Leads product vision, engineering and platform architecture at RaddeCore.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background:#7c3aed">IR</div>
+        <div class="team-name">Irfan Rafique</div>
+        <div class="team-role">NDIS Finance Specialist</div>
+        <div class="team-bio">NDIS finance expert and principal at IR Accounting Advisory. Provides specialist guidance on NDIS billing, SCHADS compliance and financial reporting to ensure RaddeCare+ meets real-world provider needs.</div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar" style="background:#0d9488">NT</div>
+        <div class="team-name">NewEra Tech Team</div>
+        <div class="team-role">Engineering & Support</div>
+        <div class="team-bio">A growing team of engineers, analysts and support specialists based in Australia. We're building in public, shipping fast and listening to our customers every step of the way.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band">
+  <h2>Ready to see RaddeCore in action?</h2>
+  <p>Try our fully interactive demo or start your 7-day free trial today.</p>
+  <div class="cta-btns">
+    <a href="https://app.raddecore.com/auth/signup" class="btn-w">Start free trial</a>
+    <a href="https://demo.raddecore.com" class="btn-ol">View live demo</a>
+    <a href="/contact" class="btn-ol">Get in touch</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      Radde<span style="color:#60a5fa">Core</span>
+      <p>Enterprise business software built around your industry. Powered by NewEraTechServices Pty Ltd. ABN 18 689 475 152</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Products</h4>
+        <a href="/raddecare">RaddeCare+ — NDIS</a>
+        <a href="/raddeserve">RaddeServe — Restaurant</a>
+        <a href="/raddeone">RaddeOne — Retail</a>
+        <a href="/pricing">Pricing</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="/about">About Us</a>
+        <a href="/blog">Blog & Resources</a>
+        <a href="/contact">Contact</a>
+        <a href="/demo">Live Demo</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 NewEraTechServices Pty Ltd. RaddeCore® is a trademark of NewEraTechServices Pty Ltd.</span>
+    <span>Made in Australia 🇦🇺</span>
+  </div>
+</footer>
+</body>
+</html>

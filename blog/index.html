@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Blog & Resources — RaddeCore</title>
+  <meta name="description" content="NDIS practice management guides, restaurant operations tips, retail business resources and RaddeCore platform updates."/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --blue:#1d4ed8;--blue2:#3b82f6;--sky:#60a5fa;
+    --dark:#0f172a;--dark2:#1e293b;--slate:#334155;--muted:#64748b;
+    --light:#94a3b8;--border:#e2e8f0;--bg:#f8fafc;--white:#fff;
+    --font:'Plus Jakarta Sans',-apple-system,sans-serif;
+    --radius:12px;
+    --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.04);
+    --shadow-lg:0 8px 40px rgba(0,0,0,.1);
+  }
+  body{font-family:var(--font);background:var(--white);color:var(--dark);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{text-decoration:none;color:inherit}
+  nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+  .nav-inner{max-width:1200px;margin:0 auto;padding:0 32px;display:flex;align-items:center;height:64px;gap:24px}
+  .nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;color:var(--dark);white-space:nowrap}
+  .nav-links{display:flex;gap:2px;flex:1}
+  .nav-links a{padding:6px 12px;border-radius:8px;font-size:13px;font-weight:500;color:var(--slate);transition:all .15s}
+  .nav-links a:hover{background:var(--bg);color:var(--dark)}
+  .nav-ctas{display:flex;gap:8px;align-items:center;margin-left:auto;white-space:nowrap}
+  .btn-ghost{padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;color:var(--slate);border:1px solid var(--border);background:none;cursor:pointer;font-family:var(--font);transition:all .15s}
+  .btn-ghost:hover{background:var(--bg)}
+  .btn-primary{padding:8px 18px;border-radius:8px;font-size:13px;font-weight:700;color:white;background:var(--blue);border:none;cursor:pointer;font-family:var(--font);transition:all .15s}
+  .btn-primary:hover{background:#1e40af;transform:translateY(-1px)}
+  footer{background:var(--dark);padding:48px 32px 24px}
+  .footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:32px;padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .footer-brand{font-weight:800;font-size:17px;color:white}
+  .footer-brand p{font-size:13px;color:rgba(255,255,255,.4);margin-top:10px;max-width:280px;line-height:1.6;font-weight:400}
+  .footer-links{display:flex;gap:48px}
+  .footer-col h4{font-size:12px;font-weight:700;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
+  .footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.45);margin-bottom:10px;transition:color .15s}
+  .footer-col a:hover{color:white}
+  .footer-bottom{max-width:1200px;margin:20px auto 0;font-size:12px;color:rgba(255,255,255,.28);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  @media(max-width:768px){.nav-links{display:none}.footer-links{flex-direction:column;gap:24px}}
+
+    .hero{background:linear-gradient(160deg,#eff6ff 0%,#fff 60%);padding:72px 32px 56px;border-bottom:1px solid var(--border);text-align:center}
+    .tag{display:inline-block;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+    .tag.blue{background:#eff6ff;color:var(--blue)}
+    .tag.purple{background:#f5f3ff;color:#7c3aed}
+    .tag.orange{background:#fff7ed;color:#ea580c}
+    .tag.teal{background:#f0fdfa;color:#0d9488}
+    .tag.green{background:#f0fdf4;color:#16a34a}
+    .hero h1{font-size:clamp(30px,4vw,48px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;margin-bottom:14px}
+    .hero p{font-size:17px;color:var(--muted);max-width:520px;margin:0 auto;line-height:1.75}
+    .filters{max-width:1200px;margin:0 auto;padding:24px 32px 0;display:flex;gap:8px;flex-wrap:wrap}
+    .filter-btn{padding:7px 18px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:white;color:var(--slate);font-family:var(--font);transition:all .15s}
+    .filter-btn:hover,.filter-btn.active{background:var(--blue);color:white;border-color:var(--blue)}
+    section{padding:40px 32px 80px}
+    .si{max-width:1200px;margin:0 auto}
+    .featured{display:grid;grid-template-columns:1.8fr 1fr;gap:24px;margin-bottom:48px}
+    .feat-card{border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-lg);background:white;display:flex;flex-direction:column}
+    .feat-img{height:240px;display:flex;align-items:center;justify-content:center;font-size:64px;flex-shrink:0}
+    .feat-body{padding:28px;flex:1;display:flex;flex-direction:column}
+    .feat-body .tag{margin-bottom:12px}
+    .feat-title{font-size:20px;font-weight:800;letter-spacing:-.3px;line-height:1.3;margin-bottom:10px;color:var(--dark)}
+    .feat-title a{color:inherit;transition:color .15s}
+    .feat-title a:hover{color:var(--blue)}
+    .feat-excerpt{font-size:14px;color:var(--muted);line-height:1.65;flex:1;margin-bottom:16px}
+    .feat-meta{font-size:12px;color:var(--light);display:flex;gap:14px;align-items:center}
+    .articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .article-card{background:white;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:all .2s;display:flex;flex-direction:column}
+    .article-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+    .article-img{height:140px;display:flex;align-items:center;justify-content:center;font-size:44px}
+    .article-body{padding:20px;flex:1;display:flex;flex-direction:column}
+    .article-body .tag{margin-bottom:10px}
+    .article-title{font-size:15px;font-weight:800;line-height:1.35;margin-bottom:8px;letter-spacing:-.2px}
+    .article-title a{color:var(--dark);transition:color .15s}
+    .article-title a:hover{color:var(--blue)}
+    .article-excerpt{font-size:13px;color:var(--muted);line-height:1.6;flex:1;margin-bottom:14px}
+    .article-meta{font-size:11px;color:var(--light);display:flex;gap:10px}
+    .newsletter{background:var(--blue);color:white;padding:60px 32px;text-align:center;margin-top:60px;border-radius:20px;max-width:1200px;margin-left:auto;margin-right:auto}
+    .newsletter h2{font-size:26px;font-weight:800;letter-spacing:-.5px;margin-bottom:10px}
+    .newsletter p{color:rgba(255,255,255,.8);margin-bottom:24px;font-size:15px}
+    .nl-form{display:flex;gap:10px;max-width:440px;margin:0 auto}
+    .nl-input{flex:1;padding:12px 16px;border-radius:9px;border:none;font-size:14px;font-family:var(--font)}
+    .nl-btn{padding:12px 24px;background:white;color:var(--blue);border:none;border-radius:9px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--font);white-space:nowrap}
+    @media(max-width:1024px){.featured{grid-template-columns:1fr}.articles-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:768px){.articles-grid{grid-template-columns:1fr}section{padding:32px 20px 60px}.nl-form{flex-direction:column}}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg width="30" height="30" viewBox="0 0 80 80" fill="none">
+        <line x1="40" y1="40" x2="40" y2="8" stroke="#3b82f6" stroke-width="3" opacity="0.5"/>
+        <line x1="40" y1="40" x2="67" y2="24" stroke="#3b82f6" stroke-width="3" opacity="0.5"/>
+        <line x1="40" y1="40" x2="67" y2="56" stroke="#3b82f6" stroke-width="3" opacity="0.5"/>
+        <line x1="40" y1="40" x2="40" y2="72" stroke="#3b82f6" stroke-width="3" opacity="0.5"/>
+        <line x1="40" y1="40" x2="13" y2="56" stroke="#3b82f6" stroke-width="3" opacity="0.5"/>
+        <line x1="40" y1="40" x2="13" y2="24" stroke="#3b82f6" stroke-width="3" opacity="0.5"/>
+        <circle cx="40" cy="8" r="5" fill="#60a5fa"/>
+        <circle cx="67" cy="24" r="5" fill="#3b82f6"/>
+        <circle cx="67" cy="56" r="5" fill="#2563eb"/>
+        <circle cx="40" cy="72" r="5" fill="#1d4ed8"/>
+        <circle cx="13" cy="56" r="5" fill="#2563eb"/>
+        <circle cx="13" cy="24" r="5" fill="#3b82f6"/>
+        <polygon points="40,22 54,30 54,50 40,58 26,50 26,30" fill="none" stroke="#1d4ed8" stroke-width="2.5"/>
+        <circle cx="40" cy="40" r="13" fill="#1d4ed8"/>
+        <text x="40" y="45" text-anchor="middle" fill="white" font-family="sans-serif" font-size="14" font-weight="700">R</text>
+      </svg>
+      <span>Radde<span style="color:#1d4ed8">Core</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/#products">Products</a>
+      <a href="/raddecare">RaddeCare+</a>
+      <a href="/raddeserve">RaddeServe</a>
+      <a href="/raddeone">RaddeOne</a>
+      <a href="/pricing">Pricing</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </div>
+    <div class="nav-ctas">
+      <a href="https://app.raddecore.com" class="btn-ghost">Sign in</a>
+      <a href="https://demo.raddecore.com" class="btn-ghost">Demo</a>
+      <a href="https://app.raddecore.com/auth/signup" class="btn-primary">Start free trial</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="tag blue">Blog & Resources</div>
+  <h1>NDIS, hospitality & retail<br/>industry insights</h1>
+  <p>Guides, updates and deep dives for Australian business owners, NDIS providers and operators.</p>
+</div>
+
+<div class="filters">
+  <button class="filter-btn active">All</button>
+  <button class="filter-btn">NDIS & Disability</button>
+  <button class="filter-btn">Restaurant & Hospitality</button>
+  <button class="filter-btn">Retail</button>
+  <button class="filter-btn">Platform updates</button>
+  <button class="filter-btn">Compliance & Legal</button>
+</div>
+
+<section>
+  <div class="si">
+
+    <!-- FEATURED -->
+    <div class="featured">
+      <div class="feat-card">
+        <div class="feat-img" style="background:#eff6ff">📋</div>
+        <div class="feat-body">
+          <span class="tag purple">NDIS & Disability</span>
+          <div class="feat-title"><a href="#">The Complete Guide to SCHADS Award Calculations for NDIS Providers in 2025</a></div>
+          <div class="feat-excerpt">SCHADS Award MA000100 is one of the most complex modern awards in Australia. This guide breaks down all 4 streams, key penalty rates, minimum engagement rules and how to avoid the underpayment errors that are costing providers thousands.</div>
+          <div class="feat-meta"><span>📅 June 2025</span><span>⏱️ 12 min read</span><span>🏷️ SCHADS · Payroll · Compliance</span></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div class="feat-card">
+          <div class="feat-body">
+            <span class="tag orange">Restaurant</span>
+            <div class="feat-title" style="font-size:16px"><a href="#">How to Reduce Labour Cost % at Your Restaurant Without Cutting Staff</a></div>
+            <div class="feat-excerpt" style="font-size:13px">Labour cost as a percentage of revenue is the single biggest controllable expense in hospitality. Here's how to get it under 30%.</div>
+            <div class="feat-meta"><span>📅 May 2025</span><span>⏱️ 8 min read</span></div>
+          </div>
+        </div>
+        <div class="feat-card">
+          <div class="feat-body">
+            <span class="tag teal">Retail</span>
+            <div class="feat-title" style="font-size:16px"><a href="#">GST & BAS for Australian Retailers: A Plain-English Guide</a></div>
+            <div class="feat-excerpt" style="font-size:13px">Everything you need to know about collecting GST, lodging BAS and keeping your ATO obligations in order.</div>
+            <div class="feat-meta"><span>📅 May 2025</span><span>⏱️ 6 min read</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARTICLE GRID -->
+    <div class="articles-grid">
+      <div class="article-card">
+        <div class="article-img" style="background:#f5f3ff">⚖️</div>
+        <div class="article-body">
+          <span class="tag purple">NDIS Compliance</span>
+          <div class="article-title"><a href="#">NDIS Audit Preparation: A Checklist for Registered Providers</a></div>
+          <div class="article-excerpt">The NDIS Commission takes audits seriously. This checklist covers documents, policies and records you need to have ready before your next audit.</div>
+          <div class="article-meta"><span>📅 June 2025</span><span>⏱️ 9 min</span></div>
+        </div>
+      </div>
+      <div class="article-card">
+        <div class="article-img" style="background:#fff7ed">🍽️</div>
+        <div class="article-body">
+          <span class="tag orange">Restaurant Operations</span>
+          <div class="article-title"><a href="#">Kitchen Display Systems vs Paper Dockets: The Real Cost Comparison</a></div>
+          <div class="article-excerpt">Still using paper dockets? Here's what it's actually costing you in errors, delays and food waste — and how KDS changes the equation.</div>
+          <div class="article-meta"><span>📅 May 2025</span><span>⏱️ 7 min</span></div>
+        </div>
+      </div>
+      <div class="article-card">
+        <div class="article-img" style="background:#f0fdfa">📦</div>
+        <div class="article-body">
+          <span class="tag teal">Retail</span>
+          <div class="article-title"><a href="#">Inventory Shrinkage: How to Find and Fix Your Biggest Stock Loss Sources</a></div>
+          <div class="article-excerpt">Shrinkage costs Australian retailers billions each year. This guide shows you how to identify the causes and systematically reduce stock loss.</div>
+          <div class="article-meta"><span>📅 April 2025</span><span>⏱️ 8 min</span></div>
+        </div>
+      </div>
+      <div class="article-card">
+        <div class="article-img" style="background:#eff6ff">💳</div>
+        <div class="article-body">
+          <span class="tag blue">Platform Update</span>
+          <div class="article-title"><a href="#">RaddeCore × Xero: Automatic NDIS Invoice Sync Is Here</a></div>
+          <div class="article-excerpt">RaddeCare+ now pushes NDIS invoices to Xero automatically every 15 minutes. Here's how to set it up and what it means for your bookkeeping workflow.</div>
+          <div class="article-meta"><span>📅 April 2025</span><span>⏱️ 4 min</span></div>
+        </div>
+      </div>
+      <div class="article-card">
+        <div class="article-img" style="background:#f5f3ff">👥</div>
+        <div class="article-body">
+          <span class="tag purple">NDIS Operations</span>
+          <div class="article-title"><a href="#">Group Support Ratios Explained: 1:1, 1:2 and 1:3 NDIS Billing Rules</a></div>
+          <div class="article-excerpt">Group support billing is one of the most misunderstood areas of NDIS billing. Get the ratio rules, support item codes and common mistakes right here.</div>
+          <div class="article-meta"><span>📅 March 2025</span><span>⏱️ 10 min</span></div>
+        </div>
+      </div>
+      <div class="article-card">
+        <div class="article-img" style="background:#f0fdf4">📊</div>
+        <div class="article-body">
+          <span class="tag green">Finance</span>
+          <div class="article-title"><a href="#">The 5 Financial Reports Every Restaurant Owner Should Review Weekly</a></div>
+          <div class="article-excerpt">Daily takings, labour cost %, food cost %, slow sellers and cash flow. If you're not reviewing these weekly, you're flying blind.</div>
+          <div class="article-meta"><span>📅 March 2025</span><span>⏱️ 6 min</span></div>
+        </div>
+      </div>
+      <div class="article-card">
+        <div class="article-img" style="background:#eff6ff">🔒</div>
+        <div class="article-body">
+          <span class="tag blue">Platform Update</span>
+          <div class="article-title"><a href="#">New: Immutable Audit Log & Transaction Rollback in RaddeCare+</a></div>
+          <div class="article-excerpt">Every billing action is now logged in a tamper-proof audit trail. Made an error? Roll back any transaction to its previous state with one click.</div>
+          <div class="article-meta"><span>📅 February 2025</span><span>⏱️ 3 min</span></div>
+        </div>
+      </div>
+      <div class="article-card">
+        <div class="article-img" style="background:#fff7ed">📅</div>
+        <div class="article-body">
+          <span class="tag orange">Restaurant Operations</span>
+          <div class="article-title"><a href="#">Table Turnover Rate: How to Serve More Covers Without Rushing Guests</a></div>
+          <div class="article-excerpt">Increasing table turnover by even 15 minutes per table per service can add thousands to your monthly revenue. Here's how to do it gracefully.</div>
+          <div class="article-meta"><span>📅 February 2025</span><span>⏱️ 7 min</span></div>
+        </div>
+      </div>
+      <div class="article-card">
+        <div class="article-img" style="background:#f5f3ff">🧾</div>
+        <div class="article-body">
+          <span class="tag purple">NDIS Billing</span>
+          <div class="article-title"><a href="#">NDIS Payment Request Bulk Upload: Step-by-Step Guide to PRODA</a></div>
+          <div class="article-excerpt">A complete walkthrough of generating and uploading bulk payment requests to PRODA/myplace. Avoid the common errors that cause claim rejections.</div>
+          <div class="article-meta"><span>📅 January 2025</span><span>⏱️ 11 min</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEWSLETTER -->
+    <div class="newsletter">
+      <h2>Stay ahead of NDIS and industry changes</h2>
+      <p>Get guides, compliance updates and RaddeCore product news delivered to your inbox. No spam — just useful stuff.</p>
+      <div class="nl-form">
+        <input class="nl-input" type="email" placeholder="your@email.com"/>
+        <button class="nl-btn">Subscribe →</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      Radde<span style="color:#60a5fa">Core</span>
+      <p>Enterprise business software built around your industry. Powered by NewEraTechServices Pty Ltd. ABN 18 689 475 152</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Products</h4>
+        <a href="/raddecare">RaddeCare+ — NDIS</a>
+        <a href="/raddeserve">RaddeServe — Restaurant</a>
+        <a href="/raddeone">RaddeOne — Retail</a>
+        <a href="/pricing">Pricing</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="/about">About Us</a>
+        <a href="/blog">Blog & Resources</a>
+        <a href="/contact">Contact</a>
+        <a href="/demo">Live Demo</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 NewEraTechServices Pty Ltd. RaddeCore® is a trademark of NewEraTechServices Pty Ltd.</span>
+    <span>Made in Australia 🇦🇺</span>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
